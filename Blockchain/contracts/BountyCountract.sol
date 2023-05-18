@@ -9,6 +9,8 @@ contract BountyDapp {
     uint256 memberCount;
     uint256 organisationMemberCount;
     uint256 submissionCount;
+    address payable owner;
+    bool internal locked;
 
       enum BountyStatus {
         NotStarted,
@@ -55,6 +57,7 @@ contract BountyDapp {
         address payable participant;
         string submissionLink;
         bool acceptanceStatus;
+        uint256 earnings;
     }
 
     struct Member{
@@ -73,9 +76,11 @@ contract BountyDapp {
     Member[] members;
     Member[] organisationMemberList;
     SubmitWork[] submissionList;
+    address[] bountyParticipationList;
 
     mapping (address => uint256) organisationBountyMapCount;
     mapping (uint256 => Bounty[]) bountyMapList;
+    mapping (address => mapping(uint256 => mapping(uint256 => Bounty))) bountyMembers;
     mapping (uint256 => Organisation) organistations;
     mapping (uint256 => Member[]) organisationMembers;
     mapping (uint256 => mapping (uint256 => Bounty)) bountyOrgMap;
@@ -87,10 +92,59 @@ contract BountyDapp {
     mapping (uint256 => mapping (uint256 => SubmitWork[])) submissions;
 
 
+    modifier noReentrant() {
+        require(!locked, "No re-entrancy");
+        locked = true;
+        _;
+        locked = false;
+    }
+
+
+    modifier onlyOwner{
+        require(msg.sender == owner, 'You are not the owner');
+        _;
+    }
+
+    modifier onlyOrganisationCreator(uint256 _organisationId){
+        require(organistations[_organisationId].creatorAddress == msg.snder, "You are not the creator");
+        _;
+    }
+
+    modifier onlyBountyCreator(uint256 __organisationId, uint256 _bountyId){
+        require(bountyMapList[__organisationId][_bountyId].bountyCreator == msg.sender, "You are not the bounty creator");
+        _;
+    }
+
+    modifier orgMembershipStatus(uint256 _organisationId) {
+        require(alreadyExist[msg.sender], " You have not yet setup your account");
+        require(!alreadyMember[msg.sender][_organisationId], "You are already a member of this organisation");
+        require(organisationList[_organisationId].id == _organisationId, "Organisation does not exist");
+        _;
+    }
+
+
+        constructor(){
+            owner = payable(msg.sender);
+        }
+
+     function createAccount() public {      
+        Member storage member = users[msg.sender];
+        require(!alreadyExist[msg.sender], "Account already exist");
+        member.id = memberCount;
+        member.memberAdress = msg.sender;
+        members.push(Member(memberCount, msg.sender));
+        memberCount++;
+        alreadyExist[msg.sender] = true;
+
+    }
+
     function createOrganisation(
         string memory name,
         string memory logoIPFS
     ) public{
+           // check to ensure the the creator has registered
+        // check to ensure the same organisation is not registered twice
+
         uint256 _totalBountiesCreated;
         uint256 _totalAmountSpent;
         uint256 _totalMembers;
@@ -141,17 +195,6 @@ contract BountyDapp {
         );
     }
 
-    function createAccount() public{      
-        Member storage member = users[msg.sender];
-        require(!alreadyExist[msg.sender], "Account already exist");
-        member.id = memberCount;
-        member.memberAdress = msg.sender;
-        members.push(Member(memberCount, msg.sender));
-        memberCount++;
-        alreadyExist[msg.sender] = true;
-
-    }
-
     function joinOrganisation(uint256 _organisationId) public {
         require(alreadyExist[msg.sender], " You have not yet setup your account");
         require(!alreadyMember[msg.sender][_organisationId], "You are already a member of this organisation");
@@ -181,7 +224,12 @@ contract BountyDapp {
         uint256 bountyAmount,
         uint256 startTime,
         uint256 endTIme
-  ) public payable {
+  ) public payable noReentrant{
+        // checks to ensure the organisaction exist
+        // check to ensure the bounty creator has registered
+        // check to ensure the start and endtime are in the future and endtime not less than start time
+        // check the value of status base on the start time
+        // the creator of the bounty should be the creator of the organisation
 
         uint256 _totalBounterHunters;
         uint256 _totalSubmittedWorks;
@@ -235,13 +283,29 @@ contract BountyDapp {
         payable(msg.sender).transfer(bountyAmount);
   }
 
+    function joinBounty(uint256 _bountyId, uint256 _organisationId) public {
+        // To join you need to be a member of the organisation
+        // the organization and bounty need to exist
+        Bounty[] storage bounty = bountyMapList[_bountyId];
+        require(alreadyExist[msg.sender], "You have not yet setup your account");
+        require(alreadyMember[msg.sender][_organisationId], "You are not yet a member of this organisation");
+        require(organisationList[_organisationId].id == _organisationId, "Organisation does not exist");
+        require( bounty[_bountyId].bountyId == _bountyId, "Bounty does not exist");
+        bounty[_bountyId].totalBounterHunters +=1;  
+
+        Member[] storage membersList = organisationMembers[_organisationId];    
+        membersList.push(Member(memberCount, msg.sender));     
+        organisationMemberCount++;
+        alreadyMember[msg.sender][_organisationId] = true;
+    }
+
     function submitWork(uint256 _bountyId, uint256 _organisationId, string memory _submissionLink) public {
-        // check to ensure user registered
+        // check to ensure user registered for the bounty and user also registered and also a member of the organisation
         // check to ensure bounty and organisation exist
         // check to ensure the bounty has not ended
         Bounty storage bounty = bountyOrgMap[_organisationId][_bountyId];
         bounty.sumissionLink.push(_submissionLink);
-
+        uint256 _totalEarnings;
         SubmitWork storage work = workMapSubmissions[msg.sender][_organisationId][_bountyId];
         work.acceptanceStatus = false;
         work.submissionId = submissionCount;
@@ -250,7 +314,7 @@ contract BountyDapp {
         work.organisationId = _organisationId;
         work.bountyId = _bountyId;
 
-        submissionList.push(SubmitWork(submissionCount, _organisationId, _bountyId, payable(msg.sender), _submissionLink, false));
+        submissionList.push(SubmitWork(submissionCount, _organisationId, _bountyId, payable(msg.sender), _submissionLink, false, _totalEarnings));
         submissionCount++;
     }
 
@@ -288,14 +352,12 @@ contract BountyDapp {
         // TODO organisation can only be removed by the creator
     delete organisationList[_organizationId];
 
-
     }
 
     function removeBounty(uint256 _bountyId) public {
         // bounty can only be removed when it has not started.
         Bounty[] storage bounty = bountyMapList[_bountyId];
         bounty[_bountyId] = bounty[bounty.length - 1];
-
         bounty.pop();
     }
 
@@ -330,10 +392,9 @@ contract BountyDapp {
             }
         }
 
-
     }
 
-  function payBountyWinners(uint256 _organisationId, uint256 _bountyId) public payable {
+  function payBountyWinners(uint256 _organisationId, uint256 _bountyId) public payable noReentrant{
     // Get all submissions, check if user submission is accepted, and if true, distribute the funds to the hunters
     // This can only be called when the bounty has ended
 
@@ -343,27 +404,35 @@ contract BountyDapp {
     uint256 amount;
 
     require(address(this).balance >= bountyAmount, "Insufficient contract balance");
-    
+
     for (uint256 i = 0; i < submissionList.length; i++) {
-        if (submissionList[i].organisationId == _organisationId && submissionList[i].bountyId == _bountyId) {
-            if (submissionList[i].acceptanceStatus == true) {
-                acceptedCount++;
-            }
+        if (submissionList[i].organisationId == _organisationId && submissionList[i].bountyId == _bountyId && submissionList[i].acceptanceStatus == true) {
+            acceptedCount++;
         }
     }
 
     require(acceptedCount > 0, "No accepted submissions found");
 
     amount = bountyAmount / acceptedCount;
+    uint256 transferAmount = amount * acceptedCount;
+    require(transferAmount <= address(this).balance, "Insufficient contract balance for transfer");
 
     for (uint256 i = 0; i < submissionList.length; i++) {
-        if (submissionList[i].organisationId == _organisationId && submissionList[i].bountyId == _bountyId) {
-            if (submissionList[i].acceptanceStatus == true) {
-                require(amount <= address(this).balance, "Insufficient contract balance for transfer");
-                payable(submissionList[i].participant).transfer(amount);
-            }
+        if (submissionList[i].organisationId == _organisationId && submissionList[i].bountyId == _bountyId && submissionList[i].acceptanceStatus == true) {
+            submissionList[i].participant.transfer(amount);
         }
     }
+    
 }
+
+//  function split() public payable onlyOwner noReentrant{
+//         require(recipients.length != 0, "There are no receipients");
+//         require(address(this).balance > 0, "No fund in the account");
+//         uint256 share = msg.value /recipients.length;
+//         for(uint256 i=0; i<recipients.length; i++){
+//             recipients[i].transfer(share);
+//         }
+//         emit TransferReceived(msg.sender, msg.value);
+//     }
 
 }
