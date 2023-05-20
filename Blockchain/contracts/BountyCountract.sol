@@ -641,7 +641,6 @@ contract BountyDapp {
         BountyStatus _status;
 
         Bounty storage bounty = bountyMapList[_organisationId][_bountyid];
-        // uint256 _status = 0;
         if (block.timestamp < bounty.startTime) {
             //proposal is pending
             _status = BountyStatus.NotStarted;
