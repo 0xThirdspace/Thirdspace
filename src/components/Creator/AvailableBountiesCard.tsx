@@ -34,7 +34,7 @@ const AvailableBountiesCard = (props: Props) => {
     const Fetch = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/Bounty/getBounty`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}api/Bounty/getBounty`,
           {
             headers: {
               "Content-Type": "application/json",
