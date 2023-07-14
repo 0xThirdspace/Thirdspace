@@ -7,7 +7,7 @@ type Props = {};
 const SignUpForm = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [fullName, setFullName] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -24,10 +24,8 @@ const SignUpForm = (props: Props) => {
     checkFormValidity();
   };
 
-  const confirmPasswordChangeHandler = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setConfirmPassword(e.target.value);
+  const fullNameChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFullName(e.target.value);
     checkFormValidity();
   };
 
@@ -36,7 +34,7 @@ const SignUpForm = (props: Props) => {
       email.trim() !== "" &&
       email.includes("@") &&
       password.trim() !== "" &&
-      confirmPassword.trim() !== ""
+      fullName.trim() !== ""
     ) {
       setIsFormValid(true);
     } else {
@@ -64,7 +62,7 @@ const SignUpForm = (props: Props) => {
 
       setEmail("");
       setPassword("");
-      setConfirmPassword("");
+      setFullName("");
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -73,10 +71,25 @@ const SignUpForm = (props: Props) => {
 
   return (
     <>
-      <form onSubmit={formSubmitHandler} action="" className="font-nexa ">
+      <form onSubmit={formSubmitHandler} action="" className="font-dmSans">
         <div className="space-y-[16px] ">
           <div className="flex flex-col space-y-1">
-            <label htmlFor="email" className="text-xl">
+            <label htmlFor="fullName" className="font-medium text-lg">
+              Full Name
+            </label>
+            <input
+              value={fullName}
+              onChange={fullNameChangeHandler}
+              type="text"
+              name="fullName"
+              id="fullName"
+              required
+              placeholder="Type here"
+              className="signUpInput"
+            />
+          </div>
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="email" className="font-medium text-lg">
               Email
             </label>
             <input
@@ -92,7 +105,7 @@ const SignUpForm = (props: Props) => {
           </div>
 
           <div className="flex flex-col space-y-1">
-            <label htmlFor="password" className="text-xl">
+            <label htmlFor="password" className="font-medium text-lg">
               Password
             </label>
             <input
@@ -106,29 +119,13 @@ const SignUpForm = (props: Props) => {
               className="signUpInput"
             />
           </div>
-
-          <div className="flex flex-col space-y-1">
-            <label htmlFor="confirmPassword" className="text-xl">
-              Confirm Password
-            </label>
-            <input
-              value={confirmPassword}
-              onChange={confirmPasswordChangeHandler}
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              required
-              placeholder="Type here"
-              className="signUpInput"
-            />
-          </div>
         </div>
 
         <Link href="/get-started"></Link>
 
         <button
           type="submit"
-          className="mt-[50px]  item just hover:btnBackgroundGradient bg-[#141414] cursor-pointer rounded-[8px] h-[50px] w-full text-xl font-bold "
+          className="mt-[50px]  item just hover:btnBackgroundGradient bg-[#141414] cursor-pointer rounded-[8px] h-[50px] w-full  font-semibold text-lg"
           onClick={() => setShowModal(true)}
           disabled={!isFormValid}
         >
@@ -136,8 +133,8 @@ const SignUpForm = (props: Props) => {
         </button>
 
         <div className="flex flex-rwo gap-2 items-center justify-center mt-2 text-base">
-          <p>Already have an account?</p>
-          <Link href="/signin" className="font-bold text-xl">
+          <p className="font-medium text-lg">Already have an account?</p>
+          <Link href="/signin" className="font-semibold text-lg">
             Log In
           </Link>
         </div>
