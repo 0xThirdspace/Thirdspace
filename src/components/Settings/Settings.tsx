@@ -11,6 +11,7 @@ import { FcSettings } from "react-icons/fc";
 import SettingCard from "./SettingsCard";
 import { BsFillGearFill } from "react-icons/bs";
 
+
 type Props = {};
 
 const Settings = (props: Props) => {
@@ -41,7 +42,7 @@ const Settings = (props: Props) => {
           </div>
         </div>
       </div>
-
+      
       <SettingCard />
     </div>
   );

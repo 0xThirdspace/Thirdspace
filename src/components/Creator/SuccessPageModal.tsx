@@ -1,5 +1,6 @@
 import { success } from "@/assets";
 import Image from "next/image";
+import { MdOutlineCancel } from "react-icons/md";
 
 type Props = {
   isVisible: boolean;
@@ -26,7 +27,7 @@ const SuccessPageModal = ({ isVisible, onClose }: Props) => {
             className="text-white text-2xl absolute top-6 right-10   "
             onClick={() => onClose()}
           >
-            X
+            <MdOutlineCancel className="w-6 h-6" />
           </button>
 
           <div className="flex flex-col items-center justify-center mt-14 text-white font-nexa ">

@@ -1,14 +1,9 @@
-import { BountyPlatformContext } from "@/context/BountyPlatformContext";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import React, { useContext } from "react";
 import { useState } from "react";
 import { BsArrowUpRight } from "react-icons/bs";
-import ConnectWallet from "../Home/ConnectWallet";
-import ConnectWalletModal from "./ConnectWalletModal";
+
 import SuccessPageModal from "./SuccessPageModal";
-import Web3Modal from "web3modal";
-import { ethers } from "ethers";
-import { spawn } from "child_process";
+
+// import {Input} from "@chakra-ui/react"
 
 type Props = {};
 
@@ -16,9 +11,10 @@ const CreateBountyForm = (props: Props) => {
   const [title, setTitle] = useState("");
   const [repoLink, setRepoLink] = useState("");
   const [amount, setAmount] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState<any>();
+  const [endDate, setEndDate] = useState<any>();
   const [description, setDescription] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccessPage, setShowSuccessPage] = useState<boolean>(false);
@@ -26,28 +22,49 @@ const CreateBountyForm = (props: Props) => {
   // onChange Handler functions
   const titleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
+    checkFormValidity();
   };
 
   const repoLinkChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRepoLink(e.target.value);
+    checkFormValidity();
   };
 
   const amountChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value);
+    checkFormValidity();
   };
 
   const startDateChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStartDate(e.target.value);
+    setStartDate(new Date(e.target.value));
+    checkFormValidity();
   };
 
   const endDateChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEndDate(e.target.value);
+    setEndDate(new Date(e.target.value));
+    checkFormValidity();
   };
 
   const descriptionChangeHandler = (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setDescription(e.target.value);
+    checkFormValidity();
+  };
+
+  const checkFormValidity = () => {
+    if (
+      title.trim() !== "" &&
+      repoLink.trim() !== "" &&
+      amount.trim() !== "" &&
+      startDate !== undefined &&
+      endDate !== undefined &&
+      description.trim() !== ""
+    ) {
+      setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
+    }
   };
 
   const formSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,20 +73,24 @@ const CreateBountyForm = (props: Props) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("url", {
-        method: "POST",
-        body: JSON.stringify({
-          title,
-          repoLink,
-          amount,
-          startDate,
-          endDate,
-          description,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/Bounty/create`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name: title,
+            repo_link: repoLink,
+            reward: amount,
+            submission_start: startDate,
+            submission_end: endDate,
+            desc: description,
+            bounty_space_id: "1",
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -97,7 +118,7 @@ const CreateBountyForm = (props: Props) => {
           <div className="flex flex-col space-y-1 ">
             <label htmlFor="repoLink">Title</label>
             <input
-              value={title}
+              defaultValue={title}
               onChange={titleChangeHandler}
               type="text"
               name="bounty_Name"
@@ -113,7 +134,7 @@ const CreateBountyForm = (props: Props) => {
               <label htmlFor="bounty_Name">Repo Link</label>
               <input
                 onChange={repoLinkChangeHandler}
-                value={repoLink}
+                defaultValue={repoLink}
                 type="text"
                 name="repoLink"
                 id="repoLink"
@@ -124,16 +145,12 @@ const CreateBountyForm = (props: Props) => {
             </div>
 
             <div className="font-nexa flex flex-col space-y-1">
-              <label
-                htmlFor="amount"
-                className="text-white
-        "
-              >
+              <label htmlFor="amount" className="text-white">
                 Amount
               </label>
               <input
                 onChange={amountChangeHandler}
-                value={amount}
+                defaultValue={amount}
                 type="number"
                 name="amount"
                 id="amount"
@@ -150,7 +167,7 @@ const CreateBountyForm = (props: Props) => {
               <label htmlFor="startDate">Start Date</label>
               <input
                 onChange={startDateChangeHandler}
-                value={startDate}
+                defaultValue={startDate ?? ""}
                 type="date"
                 name="startDate"
                 id="startDate"
@@ -161,22 +178,19 @@ const CreateBountyForm = (props: Props) => {
             </div>
 
             <div className="font-nexa flex flex-col space-y-1">
-              <label
-                htmlFor="endDate"
-                className="text-white
-        "
-              >
+              <label htmlFor="endDate" className="text-white">
                 End Date
               </label>
               <input
                 onChange={endDateChangeHandler}
-                value={endDate}
+                defaultValue={endDate}
                 type="date"
                 name="endDate"
                 id="endDate"
                 placeholder="Bounty amount in token"
                 className="text-white w-[435px] h-[33px] bg-transparent border border-[#999999]  outline-none p-4 "
               />
+              {/* <Input></Input> */}
             </div>
           </div>
 
@@ -185,7 +199,7 @@ const CreateBountyForm = (props: Props) => {
             <label htmlFor="description">Description</label>
             <textarea
               onChange={descriptionChangeHandler}
-              value={description}
+              defaultValue={description}
               name="description"
               id="description"
               cols={30}
@@ -199,6 +213,7 @@ const CreateBountyForm = (props: Props) => {
             type="submit"
             className="font-nexa btnBackgroundGradient rounded-[8px] items-center justify-center flex flex-row gap-2 w-[948px] h-[48px] "
             onClick={() => setShowSuccessPage(true)}
+            disabled={!isFormValid}
           >
             <p className="">Confirm</p>
             <BsArrowUpRight className=" w-6 h-6 " />
@@ -209,7 +224,13 @@ const CreateBountyForm = (props: Props) => {
       {/* Success Page Modal */}
 
       {isLoading ? (
-        <span>Loading....</span>
+        <div className="flex items-center justify-center -mt-32">
+          <div className="h-36 w-36 relative">
+            <div className="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
+              <div className="w-36 h-36 border-4 buttonGradient rounded-full animate-spin"></div>
+            </div>
+          </div>
+        </div>
       ) : (
         <div>
           {showSuccessPage && (

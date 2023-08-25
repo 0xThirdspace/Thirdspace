@@ -1,5 +1,6 @@
 import React from "react";
 import CreateBountyForm from "./CreateBountyForm";
+import { MdOutlineCancel } from "react-icons/md";
 
 type Props = {
   isVisible: boolean;
@@ -26,7 +27,7 @@ const CreateBountyModal = ({ isVisible, onClose }: Props) => {
             className="text-white text-2xl absolute top-6 right-10   "
             onClick={() => onClose()}
           >
-            X
+            <MdOutlineCancel className="w-6 h-6" />
           </button>
 
           {/* Content....Children */}

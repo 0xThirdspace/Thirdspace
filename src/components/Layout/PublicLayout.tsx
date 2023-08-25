@@ -1,13 +1,14 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import React, { ReactNode } from "react";
 
+
 type PublicLayoutProps = { children: ReactNode };
 
 const PublicLayout = ({ children }: PublicLayoutProps) => {
   return (
-    <div className="landingPage">
+    <div className="">
       <ChakraProvider>
-        <div>{children}</div>
+        {children}
       </ChakraProvider>
     </div>
   );

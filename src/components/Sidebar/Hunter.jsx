@@ -20,12 +20,12 @@ import Logo from "../Ui/Logo";
 const hunterIconItems = [
   {
     text: "Bounties",
-    link: "/creator",
+    link: "/hunter",
     icon: "fas fa-medal",
   },
   {
     text: "Members",
-    link: "/creator/members",
+    link: "/hunter/members",
     icon: "fa-solid fa-people-group",
   },
 ];
@@ -41,7 +41,7 @@ const HunterSidebar = ({ children }) => {
         <Link href="/creator">
           <div className="flex item-center justify-evenly text-center text-xl  text-white p-3 rounded-lg">
             <Avatar src="" alt="chainliknk avatar" size="sm"></Avatar>
-            <p className="mx-2">Chainlink Boounty </p>
+            <p className="mx-2">Chainlink Bounty </p>
             {/* <DisplayAction /> */}
           </div>
         </Link>

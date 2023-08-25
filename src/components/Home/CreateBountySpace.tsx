@@ -8,29 +8,27 @@ type Props = {};
 const CreateBountySpace = (props: Props) => {
   return (
     <>
-      <div className="bg-black border border-[#5618FF] w-[50%] mx-auto flex flex-col mt-20 items-center  p-14 ">
-        <h2 className="text-white font-bold text-4xl text-center font-nexa">
-          Create Bounty Space Name
-        </h2>
+      <div className="h-screen pt-20">
+        <div className=" bg-black w-[450px] md:w-[600px] h-[450px] mx-auto flex flex-col pt- items-center  p-14 ">
+          <h2 className="text-white font-semibold text-2xl text-center font-dmSans">
+            Create Workspace Name
+          </h2>
 
-        <p
-          className="text-[#999999] text-center mt-4 font-nexa
-        "
-        >
-          Name your bounty and start collaborating with developers to get coding
-          tasks <br /> completed. Our platform ensures transparent payment
-          processing through <br /> smart contracts
-        </p>
+          <p className="text-[#999999] text-center mt-4 font-dmSans font-normal">
+            Create your workspace and start collaborating with developers to{" "}
+            <br /> get coding tasks completed.
+          </p>
 
-        <CreateBountySpaceForm />
+          <CreateBountySpaceForm />
 
-        <div className="btnBackgroundGradient  rounded-[8px] mt-20 mb-10 ">
-          <Link href="/" className=" ">
-            <button className=" text-white w-[489px] h-[56px] flex justify-center items-center gap-2 ">
-              Proceed to dashboard
-              <BsArrowUpRight className=" w-6 h-6" />
-            </button>
-          </Link>
+          <div className="btnBackgroundGradient  rounded-[8px] mt-10 md:mt-20 mb-10 ">
+            <Link href="/creator" className=" ">
+              <button className=" text-white w-[320px] md:w-[489px] h-[50px] flex justify-center items-center gap-2 ">
+                Proceed to dashboard
+                <BsArrowUpRight className=" w-6 h-6" />
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

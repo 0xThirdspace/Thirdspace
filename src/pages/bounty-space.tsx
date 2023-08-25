@@ -5,7 +5,7 @@ type Props = {};
 
 const CreateBountySpacePage = (props: Props) => {
   return (
-    <div>
+    <div className="bg-[#050505] h-screen">
       <CreateBountySpace />
     </div>
   );

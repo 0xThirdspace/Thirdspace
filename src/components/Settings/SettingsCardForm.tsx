@@ -17,7 +17,7 @@ const SettingsCardForm = (props: Props) => {
           />
         </div>
 
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <h2>Bounty Space Privacy</h2>
 
           <div className=" items-start justify-start flex flex-row gap-8 mt-2 ">
@@ -36,12 +36,11 @@ const SettingsCardForm = (props: Props) => {
               <label htmlFor="public">Public</label>
             </div>
           </div>
-        </div>
+        </div> */}
       </form>
       {/* buttons */}
 
       <div className="flex flex-col md:flex-row justify-between mt-14 mb-10">
-        <button className="btnBorderGradient3  ">Cancel</button>
 
         <button className="btnBackgroundGradient w-[350px] h-[48px] items-center rounded-[8px] ">
           Save Changes

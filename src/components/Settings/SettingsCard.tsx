@@ -1,9 +1,11 @@
 import { CiCircleRemove } from "react-icons/ci";
 import SettingsCardForm from "./SettingsCardForm";
-
+import React, { useState } from "react";
+import DeleteSettings from "./DeleteSettings";
 type Props = {};
 
 const SettingCard = (props: Props) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   return (
     <div className="bg-[#0A0A0A]  mx-10 mt-10">
       <div className="flex flex-col py-8 mx-14 font-nexa  ">
@@ -15,7 +17,7 @@ const SettingCard = (props: Props) => {
             </div>
           </div>
 
-          <button className="items-center rounded-full flex flex-row bg-[#B2000029] border border-[#B20000] w-[260px] h-[48px] justify-center gap-1 p-2 font-nexa font-normal  ">
+          <button  className="items-center rounded-full flex flex-row bg-[#B2000029] border border-[#B20000] w-[260px] h-[48px] justify-center gap-1 p-2 font-nexa font-normal  " onClick={() => setShowModal(true)}>
             <p>Delete Bounty Space</p>
 
             <div className="RemoveIcon-container">
@@ -26,7 +28,13 @@ const SettingCard = (props: Props) => {
         <div className="mt-10">
           <SettingsCardForm />
         </div>
+        
       </div>
+      <DeleteSettings
+          isVisible={showModal}
+          onClose={() => setShowModal(false)}
+        ></DeleteSettings>
+
     </div>
   );
 };

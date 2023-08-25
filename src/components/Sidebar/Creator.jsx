@@ -16,6 +16,8 @@ import {
   Portal,
 } from "@chakra-ui/react";
 import Logo from "../Ui/Logo";
+import { logo } from "@/assets";
+import Image from "next/image";
 
 const iconItems = [
   {
@@ -23,11 +25,11 @@ const iconItems = [
     link: "/creator",
     icon: "fas fa-medal",
   },
-  {
-    text: "Members",
-    link: "/creator/members",
-    icon: "fa-solid fa-people-group",
-  },
+  // {
+  //   text: "Members",
+  //   link: "/creator/members",
+  //   icon: "fa-solid fa-people-group",
+  // },
   {
     text: "Settings",
     link: "/creator/settings",
@@ -46,7 +48,7 @@ const CreatorSidebar = ({ children }) => {
         <Link href="/creator">
           <div className="flex item-center justify-evenly text-center text-xl  text-white p-3 rounded-lg">
             <Avatar src="" alt="chainliknk avatar" size="sm"></Avatar>
-            <p className="mx-2">Chainlink Boounty </p>
+            <p className="mx-2">Chainlink Bounty </p>
             <DisplayAction />
           </div>
         </Link>
@@ -68,7 +70,7 @@ const CreatorSidebar = ({ children }) => {
         </div>
 
         <div className="ml-4 mb-10">
-          <Logo />
+          <Image src={logo} alt="logo" width={180} />
         </div>
       </div>
 
