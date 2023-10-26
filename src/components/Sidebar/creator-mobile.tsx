@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Avatar } from "@chakra-ui/react";
-import { kanbanItems, iconItems } from "./desktop";
+import { kanbanItems, iconItems } from "./creator-desktop";
 import { Hamburger, VerticalThreeDotsIcon } from "@/components/shared";
 
 export const BackButton = () => {
@@ -26,7 +26,7 @@ export const BackButton = () => {
   );
 };
 
-const SidebarMobile = () => {
+const CreatorSidebarMobile = () => {
   const [sidebar, setSidebar] = useState(false);
   const toggleSidebar = () => {
     return setSidebar(!sidebar);
@@ -154,4 +154,4 @@ const SidebarMobile = () => {
   );
 };
 
-export default SidebarMobile;
+export default CreatorSidebarMobile;

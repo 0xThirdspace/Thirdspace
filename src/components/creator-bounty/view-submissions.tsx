@@ -16,7 +16,7 @@ const ViewSubmissions = (props: { onclick: any }) => {
 
   return (
     <div className="text-white m-3 sm:m-5 font-normal h-screen w-screen overflow-y-auto flex items-center justify-center">
-      <div className="bg-[#0F0F0F] rounded-md h-screen w-full  flex flex-col items-start  mb-10">
+      <div className="bg-[#0F0F0F] rounded-md h-screen w-auto max-w-[1000px]  flex flex-col items-start  pt-[18px]  mb-10">
         <div onClick={props.onclick} className="py-[28px] self-end pr-[28px]">
           <CloseBtn />
         </div>
@@ -34,7 +34,7 @@ const ViewSubmissions = (props: { onclick: any }) => {
           </p>
         </section>
 
-        <section className="bg-black w-full flex flex-col gap-5 p-2  sm:pl-10 pb-16 ">
+        <section className="bg-black w-full flex flex-col gap-5 p-2 pr-2 sm:pl-10 sm:pr-5 pb-16 ">
           {[
             {
               id: 1,
@@ -136,15 +136,15 @@ const ViewSubmissions = (props: { onclick: any }) => {
 
         {submissionModal && (
           <section className="w-screen h-screen bg-inherit absolute z-10 top-0 left-0 flex items-center justify-center">
-            <main className="w-auto min-w-[300px] mx-2 max-w-[700px] h-auto bg-black px-5 sm:px-10 py-5 rounded-md">
+            <main className="w-auto relative min-w-[300px] mx-2 max-w-[700px] h-auto bg-black px-5 sm:px-10 py-5 rounded-md">
               <div
                 onClick={closeSubmissionModal}
-                className="max-w-[30px] flex mt-8 mb-5"
+                className="max-w-[30px] absolute right-10 mt-5"
               >
                 <CloseBtn />
               </div>
 
-              <main className="flex flex-col sm:flex-row gap-5 items-start sm:items-center py-5">
+              <main className="flex flex-col sm:flex-row gap-5 items-start sm:items-center py-5 mt-10">
                 <div className="w-full flex items-center gap-2 min-w-[230px] max-w-[270px] ">
                   <Image
                     width={56}
@@ -159,7 +159,7 @@ const ViewSubmissions = (props: { onclick: any }) => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 sm:gap-6">
+                <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-6">
                   <div className="flex gap-2 items-center px-4 py-2 rounded-full bg-zinc-500 ">
                     <p>sj23h.....4h2s9</p>
                     <RiFileCopyLine />

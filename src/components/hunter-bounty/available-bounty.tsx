@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const AvailableBounty = () => {
+const HunterAvailableBounty = () => {
   return (
     <div className="bg-[#1F1F1F] px-5 sm:px-10 py-4 h-auto ">
       <div className="flex flex-col gap-20">
@@ -77,7 +77,7 @@ const AvailableBounty = () => {
           return (
             <>
               <Link
-                href="/bounty-creator/id"
+                href="/bounty-hunter/id"
                 key={i.id}
                 className="flex flex-col md:hidden gap-3"
               >
@@ -113,7 +113,7 @@ const AvailableBounty = () => {
               </Link>
 
               <Link
-                href="/bounty-creator/id"
+                href="/bounty-hunter/id"
                 key={i.id}
                 className="hidden md:flex gap-5"
               >
@@ -152,4 +152,4 @@ const AvailableBounty = () => {
   );
 };
 
-export default AvailableBounty;
+export default HunterAvailableBounty;

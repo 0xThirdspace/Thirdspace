@@ -1,17 +1,22 @@
-import React, { PropsWithChildren, useState } from "react";
+import { useRouter } from "next/router";
 import { Avatar } from "@chakra-ui/react";
 import { DashboardSearch } from "@/components/shared";
-import CreatorSidebarMobile from "@/components/Sidebar/creator-mobile";
+import React, { PropsWithChildren, useState } from "react";
 import CreatorDashboard from "@/components/creator-bounty/dashboard";
-import { useRouter } from "next/router";
-import AvailableBounty from "@/components/creator-bounty/available-bounty";
+import HunterSidebarMobile from "@/components/Sidebar/hunter-mobile";
 import BountyMembers from "@/components/creator-bounty/bounty-members";
+import HunterSidebarDesktop from "@/components/Sidebar/hunter-desktop";
+import AvailableBounty from "@/components/creator-bounty/available-bounty";
 import AccountSettingsModal from "@/components/Settings/AccountSettingsModal";
-import CreatorSidebarDesktop from "@/components/Sidebar/creator-desktop";
+import Joinedbounty from "@/components/hunter-bounty/joined-bounty";
+import AvailableBounties from "@/components/Hunter/Bounties/AvailableBounties";
+import HunterAvailableBounty from "@/components/hunter-bounty/available-bounty";
+import Bountyhunters from "@/components/hunter-bounty/ohter-bounty-hunters";
 
 const bountiesNav: { id: number; value: string; path?: string }[] = [
   { id: 1, value: "Available Bounties" },
-  { id: 2, value: "Members" },
+  { id: 2, value: "Joined Bounties" },
+  { id: 3, value: "Members" },
 ];
 
 export type customNavPropTypes<
@@ -71,7 +76,7 @@ export const CustomNavAlt = <
   );
 };
 
-const BountyCreator = () => {
+const BountyHunter = () => {
   const [activeTab, setActiveTab] = useState(bountiesNav[0]["value"]);
 
   const [settings, setSettings] = useState(false);
@@ -80,7 +85,7 @@ const BountyCreator = () => {
   };
 
   return (
-    <main className="w-full h-auto bg-black-500">
+    <main className="w-full h-auto bg-black-500 mb-20">
       <div className="flex items-end self-end justify-end mb-10 ">
         <div onClick={displaySettingsModal}>
           <Avatar size="lg" src="/images/workspace-logo.png"></Avatar>
@@ -94,7 +99,7 @@ const BountyCreator = () => {
         </div>
       </div>
       <section className="flex items-center gap-5 sm:gap-10">
-        <CreatorSidebarMobile />
+        <HunterSidebarMobile />
         <CreatorDashboard />
       </section>
 
@@ -115,8 +120,9 @@ const BountyCreator = () => {
       </div>
 
       <div className="h-full bg-black">
-        {activeTab === bountiesNav[0]["value"] && <AvailableBounty />}
-        {activeTab === bountiesNav[1]["value"] && <BountyMembers />}
+        {activeTab === bountiesNav[0]["value"] && <HunterAvailableBounty />}
+        {activeTab === bountiesNav[1]["value"] && <Joinedbounty />}
+        {activeTab === bountiesNav[2]["value"] && <Bountyhunters />}
       </div>
     </main>
   );
@@ -125,11 +131,11 @@ const BountyCreator = () => {
 const Index = () => {
   return (
     <div>
-      <CreatorSidebarDesktop>
+      <HunterSidebarDesktop>
         <div className="pt-6 lg:pt-12 px-4 sm:px-7">
-          <BountyCreator />
+          <BountyHunter />
         </div>
-      </CreatorSidebarDesktop>
+      </HunterSidebarDesktop>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import { BsFillPeopleFill, BsArrowUpRight } from "react-icons/bs";
 import AddMemberForm from "../Members/AddMemberForm";
 import MembersCart from "../Members/MembersCart";
-import MemberModal from "../Members/MemberModal";
+import CustomModal from "../Members/CustomModal";
 import Image from "next/image";
 
 const BountyMembers = () => {
@@ -19,11 +19,8 @@ const BountyMembers = () => {
 
   return (
     <div>
-      {/* Search and Add Members container */}
-      <div className="flex flex-row  justify-between mt-10 ">
-        {/* Members */}
-
-        <div className="flex flex-row gap-1 ">
+      <div className="flex flex-row items-center justify-between mt-10 ">
+        <div className="flex flex-row gap-3">
           <BsFillPeopleFill className="w-6 h-6" />
           <h2 className="text-white  font-nexa font-extrabold text-xl ">
             Members
@@ -31,9 +28,9 @@ const BountyMembers = () => {
         </div>
 
         {/* Search */}
-        <div className="flex  w-1/3  bg-[#0F0F0F] rounded-full items-center  ">
+        <div className="hidden sm:flex  w-1/3  bg-[#0F0F0F] rounded-full items-center  ">
           <button>
-            <BiSearch className="w-6 h-6 ml-6" />
+            <BiSearch className="w-5 h-5 ml-6" />
           </button>
           <input
             type="text"
@@ -46,30 +43,27 @@ const BountyMembers = () => {
           className="flex flex-row gap-2 rounded-md border-[1px] border-red-300 items-center px-2 "
           onClick={() => setShowModal(true)}
         >
-          <h2 className="text-white font-nexa font-bold text-xl ">
+          <h2 className="text-white font-nexa font-bold text-base sm:text-xl ">
             Add Member
           </h2>
 
-          <AiOutlinePlus className="w-6 h-6" />
+          <AiOutlinePlus className=" w-6 sm:w-6 h-6 sm:h-6" />
         </button>
       </div>
 
-      {/* user container */}
+      {/* members container */}
       <div className="mt-10">
         <MembersCart />
       </div>
 
       {/* Add Member Modal Overlay */}
-      <MemberModal isVisible={showModal} onClose={() => setShowModal(false)}>
+      <CustomModal isVisible={showModal} onClose={() => setShowModal(false)}>
         <div className=" w-full mx-auto flex flex-col mt-4 items-center  p-14 ">
           <h2 className="text-white font-bold text-2xl text-center font-nexa">
             Add Member
           </h2>
 
-          <p
-            className="text-[#999999] text-center mt-4 font-nexa text-sm
-    "
-          >
+          <p className="text-[#999999] text-center mt-4 font-nexa text-sm">
             Add a member to your bounty space and start collaborating with
             developers to <br /> get coding tasks completed.
           </p>
@@ -78,7 +72,7 @@ const BountyMembers = () => {
 
           <div
             onClick={() => setShowSuccessModal(true)}
-            className="btnBackgroundGradient  rounded-[8px] mt-20 mb-10 "
+            className="btnBackgroundGradient rounded-[8px] mt-20 mb-10 "
           >
             <Link href="#" className=" ">
               <button className=" text-white w-[489px] h-[56px] flex justify-center items-center gap-2 ">
@@ -88,9 +82,9 @@ const BountyMembers = () => {
             </Link>
           </div>
         </div>
-      </MemberModal>
+      </CustomModal>
 
-      <MemberModal isVisible={showSuccessModal} onClose={closeSuccessModal}>
+      <CustomModal isVisible={showSuccessModal} onClose={closeSuccessModal}>
         <div className="w-full mx-auto flex flex-col gap-7 mt-4 items-center justify-center p-14 ">
           <Image
             width={150}
@@ -108,7 +102,7 @@ const BountyMembers = () => {
             Invite has been sent successfully !
           </p>
         </div>
-      </MemberModal>
+      </CustomModal>
     </div>
   );
 };

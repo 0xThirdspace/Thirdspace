@@ -50,7 +50,7 @@ export const iconItems = [
   },
 ];
 
-const SidebarDesktop = ({ children }) => {
+const CreatorSidebarDesktop = ({ children }) => {
   // const router = useRouter();
 
   return (
@@ -177,4 +177,4 @@ const DisplayAction = () => {
   );
 };
 
-export default SidebarDesktop;
+export default CreatorSidebarDesktop;

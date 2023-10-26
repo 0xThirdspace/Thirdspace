@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import MembersCart from "./MembersCart";
 import { BiSearch } from "react-icons/bi";
 import AddMemberForm from "./AddMemberForm";
-import AddMemberModal from "./MemberModal";
-import SidebarMobile from "../Sidebar/mobile";
+import AddMemberModal from "./CustomModal";
+import CreatorSidebarMobile from "../Sidebar/creator-mobile";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsArrowUpRight } from "react-icons/bs";
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -20,7 +20,7 @@ const Members = (props: Props) => {
       {/* Image container */}
       <div className="flex items-center justify-between px-10">
         <div className="flex justify-start mt-10">
-          <SidebarMobile />
+          <CreatorSidebarMobile />
         </div>
         <div className="flex justify-end mt-10  ">
           <Link href="/">

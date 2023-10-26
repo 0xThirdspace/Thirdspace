@@ -5,10 +5,10 @@ import {
   SendChatText,
   ReceiveChatText,
 } from "../shared";
-import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { BackButton } from "../Sidebar/mobile";
+import { BackButton } from "../Sidebar/creator-mobile";
+import React, { useEffect, useRef, useState } from "react";
 
 type Message = {
   text: string;

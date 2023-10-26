@@ -1,23 +1,17 @@
-import React, { useState } from "react";
 import Image from "next/image";
+import React, { useState } from "react";
 import { ArrowRightDiagonalBtn } from "@/components/shared";
-import EditBounty from "@/components/creator-bounty/edit-bounty";
-import ViewSubmissions from "@/components/creator-bounty/view-submissions";
+import SubmitWork from "@/components/hunter-bounty/submit-work";
 
 const BountyView = () => {
-  const [editBounty, setEditBounty] = useState(false);
-  const displayEditBountyModal = () => {
-    return setEditBounty(!editBounty);
-  };
-
-  const [viewSubmission, setViewSubmission] = useState(false);
-  const closeViewSubmission = () => {
+  const [submitWork, setSubmitWork] = useState<boolean>(false);
+  const closeSubmitWork = () => {
     console.log("clicked");
-    return setViewSubmission(false);
+    return setSubmitWork(false);
   };
 
-  const openViewSubmission = () => {
-    return setViewSubmission(true);
+  const openSubmitWork = () => {
+    return setSubmitWork(true);
   };
 
   return (
@@ -123,32 +117,24 @@ const BountyView = () => {
             issue?
           </p>
 
-          <div onClick={displayEditBountyModal}>
+          <div>
             <button className="w-full flex items-center justify-center py-3 gap-5 sm:gap-4 text-[16px] font-bold rounded-lg  border-[1px] border-buttonGradient">
-              Edit Bounty
+              Bounty Repo
               <ArrowRightDiagonalBtn />
             </button>
           </div>
 
-          {editBounty && (
+          <div onClick={openSubmitWork}>
+            <button className="buttonLinearBackground w-full flex items-center justify-center py-3 gap-5 sm:gap-4 text-[16px] font-bold rounded-lg">
+              <p>Submit Work</p>
+              <ArrowRightDiagonalBtn />
+            </button>
+          </div>
+
+          {submitWork && (
             <div className="bg-[#191919] fixed z-10 left-0 top-0 w-screen h-screen overflow-y-auto py-16">
               <div className="flex margin-auto items-center justify-center">
-                <EditBounty onclick={displayEditBountyModal} />
-              </div>
-            </div>
-          )}
-
-          <div onClick={openViewSubmission}>
-            <button className="buttonLinearBackground w-full flex items-center justify-center py-3 gap-5 sm:gap-4 text-[16px] font-bold rounded-lg">
-              <p>View Submission</p>
-              <ArrowRightDiagonalBtn />
-            </button>
-          </div>
-
-          {viewSubmission && (
-            <div className="bg-[#191919] fixed z-10 left-0 top-0 w-screen h-screen">
-              <div className="flex margin-auto items-center justify-center">
-                <ViewSubmissions onclick={closeViewSubmission} />
+                <SubmitWork onclick={closeSubmitWork} />
               </div>
             </div>
           )}

@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const MemberModal = ({ isVisible, onClose, children }: Props) => {
+const CustomModal = ({ isVisible, onClose, children }: Props) => {
   if (!isVisible) return null;
 
   const handleClose = (e: any) => {
@@ -35,4 +35,4 @@ const MemberModal = ({ isVisible, onClose, children }: Props) => {
   );
 };
 
-export default MemberModal;
+export default CustomModal;

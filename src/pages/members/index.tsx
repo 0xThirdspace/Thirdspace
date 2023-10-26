@@ -1,14 +1,14 @@
 import Members from "@/components/Members/Members";
-import SidebarDesktop from "@/components/Sidebar/desktop";
+import CreatorSidebarDesktop from "@/components/Sidebar/creator-desktop";
 import React from "react";
 
 type Props = {};
 
 const MembersPage = (props: Props) => {
   return (
-    <SidebarDesktop>
+    <CreatorSidebarDesktop>
       <Members />
-    </SidebarDesktop>
+    </CreatorSidebarDesktop>
   );
 };
 

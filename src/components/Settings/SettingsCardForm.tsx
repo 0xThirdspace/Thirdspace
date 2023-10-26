@@ -41,8 +41,7 @@ const SettingsCardForm = (props: Props) => {
       {/* buttons */}
 
       <div className="flex flex-col md:flex-row justify-between mt-14 mb-10">
-
-        <button className="btnBackgroundGradient w-[350px] h-[48px] items-center rounded-[8px] ">
+        <button className="btnBackgroundGradient w-full h-[48px] items-center rounded-[8px] ">
           Save Changes
         </button>
       </div>

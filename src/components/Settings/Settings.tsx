@@ -11,21 +11,20 @@ import { FcSettings } from "react-icons/fc";
 import SettingCard from "./SettingsCard";
 import { BsFillGearFill } from "react-icons/bs";
 
-
 type Props = {};
 
 const Settings = (props: Props) => {
   return (
-    <div className="flex flex-col flex-wrap ml-[300px]  ">
+    <div className="flex flex-col flex-wrap ml-[300px]">
       {/* Image container */}
 
       <div className="px-10">
         <div className="flex justify-end mt-10  ">
           <Link href="/">
             <Image
+              width={50}
               src={profileImage}
               alt="profileImage"
-              width={50}
               className="rounded-full"
             />
           </Link>
@@ -42,7 +41,7 @@ const Settings = (props: Props) => {
           </div>
         </div>
       </div>
-      
+
       <SettingCard />
     </div>
   );
