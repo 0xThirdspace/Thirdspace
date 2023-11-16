@@ -23,71 +23,8 @@ type Bounty = {
 const AvailableBountiesCard = (props: any) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedBounty, setSelectedBounty] = useState<Bounty | null>(null);
-  // const [availableBounties, setAvailableBounties] = useState<any[]>([]);
+  const [availableBounties, setAvailableBounties] = useState<any[]>([]);
   const { data: session } = useSession();
-
-  const availableBounties = [
-    {
-      id: 1,
-      image: "/images/image-1.svg",
-      title: "Armored Core: Verdict Day access memory violation crash",
-      startDate: "21st June, 2023",
-      endDate: "21st June, 2023",
-      description:
-        " Acronis looks forward to working with the security community to find security vulnerabilities in order to keep our businesses and customers safe. Rules for us We respect the time and effort of our The work done so far has been achieved by porting over the C version of the driver: georgerobotics/cyw43-driver. This driver is used by the SDK maintained by the Raspberry Pi foun.............",
-      reward: "50,000",
-    },
-    {
-      id: 2,
-      image: "/images/image-2.png",
-      title: "Armored Core: Verdict Day access memory violation crash",
-      startDate: "21st June, 2023",
-      endDate: "21st June, 2023",
-      description:
-        " Acronis looks forward to working with the security community to find security vulnerabilities in order to keep our businesses and customers safe. Rules for us We respect the time and effort of our The work done so far has been achieved by porting over the C version of the driver: georgerobotics/cyw43-driver. This driver is used by the SDK maintained by the Raspberry Pi foun.............",
-      reward: "50,000",
-    },
-    {
-      id: 3,
-      image: "/images/image-2.svg",
-      title: "Armored Core: Verdict Day access memory violation crash",
-      startDate: "21st June, 2023",
-      endDate: "21st June, 2023",
-      description:
-        " Acronis looks forward to working with the security community to find security vulnerabilities in order to keep our businesses and customers safe. Rules for us We respect the time and effort of our The work done so far has been achieved by porting over the C version of the driver: georgerobotics/cyw43-driver. This driver is used by the SDK maintained by the Raspberry Pi foun.............",
-      reward: "50,000",
-    },
-    {
-      id: 4,
-      image: "/images/image-1.svg",
-      title: "Armored Core: Verdict Day access memory violation crash",
-      startDate: "21st June, 2023",
-      endDate: "21st June, 2023",
-      description:
-        " Acronis looks forward to working with the security community to find security vulnerabilities in order to keep our businesses and customers safe. Rules for us We respect the time and effort of our The work done so far has been achieved by porting over the C version of the driver: georgerobotics/cyw43-driver. This driver is used by the SDK maintained by the Raspberry Pi foun.............",
-      reward: "50,000",
-    },
-    {
-      id: 5,
-      image: "/images/image-2.png",
-      title: "Armored Core: Verdict Day access memory violation crash",
-      startDate: "21st June, 2023",
-      endDate: "21st June, 2023",
-      description:
-        " Acronis looks forward to working with the security community to find security vulnerabilities in order to keep our businesses and customers safe. Rules for us We respect the time and effort of our The work done so far has been achieved by porting over the C version of the driver: georgerobotics/cyw43-driver. This driver is used by the SDK maintained by the Raspberry Pi foun.............",
-      reward: "50,000",
-    },
-    {
-      id: 6,
-      image: "/images/image-2.svg",
-      title: "Armored Core: Verdict Day access memory violation crash",
-      startDate: "21st June, 2023",
-      endDate: "21st June, 2023",
-      description:
-        " Acronis looks forward to working with the security community to find security vulnerabilities in order to keep our businesses and customers safe. Rules for us We respect the time and effort of our The work done so far has been achieved by porting over the C version of the driver: georgerobotics/cyw43-driver. This driver is used by the SDK maintained by the Raspberry Pi foun.............",
-      reward: "50,000",
-    },
-  ];
 
   const handleBountyClick = (selectedBounty: Bounty) => {
     setShowModal(true);
@@ -101,7 +38,7 @@ const AvailableBountiesCard = (props: any) => {
           Authorization: `Bearer ${session?.user.token}`,
         },
       });
-      // setAvailableBounties(res.data);
+      setAvailableBounties(res.data);
       console.log(res.data);
     } catch (error) {
       console.log(error);
