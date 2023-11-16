@@ -23,9 +23,10 @@ type Bounty = {
 const AvailableBountiesCard = (props: any) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedBounty, setSelectedBounty] = useState<Bounty | null>(null);
-  const [availableBounties, setAvailableBounties] = useState<any[]>([]);
+  const [availableBounties, setAvailableBounties] = useState<Bounty[]>([]); // Specify the type
 
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  console.log(status);
 
   const handleBountyClick = (selectedBounty: Bounty) => {
     setShowModal(true);
