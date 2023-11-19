@@ -21,7 +21,8 @@ const Header = () => {
               </Link>
             </div>
           ))}
-          <Link href="#bounties">
+          <Link href="/bounty-creator">
+            {/* <Link href="/available-bounties"> */}
             <Image
               className="md:w-24 md:mt-4 lg:mt-2  xl:mt-4 lg:w-36"
               src={bountyButton}
