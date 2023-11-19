@@ -15,7 +15,7 @@ const BountyView = () => {
   };
 
   return (
-    <div className="text-white bg-[#0F0F0F] h-screen w-screen flex items-center justify-center ">
+    <div className="text-white bg-[#0F0F0F] bg-opacity-80 h-screen w-screen flex items-center justify-center ">
       <div className="w-auto max-w-[1200px] h-auto max-h-[95%] flex flex-col md:flex-row gap-10 px-5 sm:px-10 py-10 mb-5 bg-zinc-800 overflow-y-auto no-scrollbar    ">
         <section className="w-full md:w-[75%] pr-2">
           <main className="flex flex-col sm:flex-row gap-3">
@@ -132,7 +132,7 @@ const BountyView = () => {
           </div>
 
           {submitWork && (
-            <div className="bg-[#191919] fixed z-10 left-0 top-0 w-screen h-screen overflow-y-auto py-16">
+            <div className="bg-[#191919] bg-opacity-75 fixed z-10 left-0 top-0 w-screen h-screen overflow-y-auto py-16">
               <div className="flex margin-auto items-center justify-center">
                 <SubmitWork onclick={closeSubmitWork} />
               </div>

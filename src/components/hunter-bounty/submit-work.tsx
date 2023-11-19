@@ -45,7 +45,7 @@ const SubmitWork = (props: { onclick: any }) => {
   };
 
   return (
-    <div className="bg-[#0F0F0F] rounded-md h-auto w-screen mx-4 sm:mx-0 sm:w-[586px] md:w-[1000px] flex flex-col items-center">
+    <div className="bg-[#0F0F0F] rounded-md h-auto w-screen mx-4 sm:mx-0 sm:w-[586px] md:w-[900px] flex flex-col items-center">
       <div onClick={props.onclick} className="py-[28px] self-end pr-[28px]">
         <CloseBtn />
       </div>

@@ -85,7 +85,7 @@ const BountyCreator = () => {
         <div onClick={displaySettingsModal}>
           <Avatar size="lg" src="/images/workspace-logo.png"></Avatar>
           {settings && (
-            <div className="bg-[#191919] fixed z-10 left-0 top-0 w-screen h-screen overflow-y-auto py-16">
+            <div className="bg-[#191919] bg-opacity-80 fixed z-10 left-0 top-0 w-screen h-screen overflow-y-auto py-16">
               <div className="flex margin-auto items-center justify-center">
                 <AccountSettingsModal onclick={displaySettingsModal} />
               </div>

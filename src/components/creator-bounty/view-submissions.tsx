@@ -135,7 +135,7 @@ const ViewSubmissions = (props: { onclick: any }) => {
         </section>
 
         {submissionModal && (
-          <section className="w-screen h-screen bg-inherit absolute z-10 top-0 left-0 flex items-center justify-center">
+          <section className="w-screen h-screen bg-[#191919] bg-opacity-80  absolute z-10 top-0 left-0 flex items-center justify-center">
             <main className="w-auto relative min-w-[300px] mx-2 max-w-[700px] h-auto bg-black px-5 sm:px-10 py-5 rounded-md">
               <div
                 onClick={closeSubmissionModal}
