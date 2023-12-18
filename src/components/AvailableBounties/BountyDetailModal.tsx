@@ -44,7 +44,7 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
           </button>
 
           {/* Desktop Screen */}
-          <div className=" hidden md:flex  flex-row mt-10 font-dmSans gap-4 mx-4  p-4 text-white">
+          <div className=" hidden md:flex  flex-row mt-10 font-DMSans gap-4 mx-4  p-4 text-white">
             <div className="flex flex-col  ">
               <div className="flex flex-row gap-4 ">
                 <Image
@@ -55,10 +55,10 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
                 />
 
                 <div className="flex flex-col mt-3">
-                  <h2 className="font-dmSans font-semibold text-lg">
+                  <h2 className="font-DMSans font-semibold text-lg">
                     {selectedBounty.title}
                   </h2>
-                  <div className="flex flex-row justify-between font-normal font-dmSans text-sm my-2 mr-6">
+                  <div className="flex flex-row justify-between font-normal font-DMSans text-sm my-2 mr-6">
                     <p>
                       <span className="text-[#999999]">Start Date: </span>
                       {selectedBounty.startDate}
@@ -70,7 +70,7 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
                   </div>
                   <h2 className="font-semibold text-lg">Scope</h2>
 
-                  <p className="font-dmSans font-normal text-sm mb-2 text-[#999999]  ">
+                  <p className="font-DMSans font-normal text-sm mb-2 text-[#999999]  ">
                     {selectedBounty.description}
                   </p>
                 </div>
@@ -82,12 +82,12 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
                   <div className="flex flex-col space-y-2  text-white">
                     <h2 className="font-semibold text-lg">Background</h2>
 
-                    <p className=" font-dmSans font-normal text-sm  text-[#999999] ">
+                    <p className=" font-DMSans font-normal text-sm  text-[#999999] ">
                       {bountyDetail.background}
                     </p>
 
                     <h2 className="font-semibold text-lg">Requirement</h2>
-                    <p className="font-dmSans font-normal text-sm mb-10 text-[#999999] ">
+                    <p className="font-DMSans font-normal text-sm mb-10 text-[#999999] ">
                       {bountyDetail.requirement}
                     </p>
                   </div>
@@ -111,7 +111,7 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
               <div className="mt-7">
                 <Link
                   href="/creator"
-                  className="font-dmSans btnBackgroundGradient rounded-[8px] w-[220px] h-[50px] items-center justify-center flex flex-row gap-2 font-medium "
+                  className="font-DMSans btnBackgroundGradient rounded-[8px] w-[220px] h-[50px] items-center justify-center flex flex-row gap-2 font-medium "
                 >
                   <p className="">Join Bounty space</p>
                   <BsArrowUpRight className=" w-6 h-6 " />
@@ -122,7 +122,7 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
 
           {/* Mobile Screen*/}
 
-          <div className="flex  md:hidden flex-col mt-6 font-dmSans gap-4 mx-4  p-4 text-white  ">
+          <div className="flex  md:hidden flex-col mt-6 font-DMSans gap-4 mx-4  p-4 text-white  ">
             <div className="flex flex-col  ">
               <div className="flex flex-row gap-4 ">
                 <Image
@@ -133,10 +133,10 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
                 />
 
                 <div className="flex flex-col mt-3">
-                  <h2 className="font-dmSans font-medium text-normal">
+                  <h2 className="font-DMSans font-medium text-normal">
                     {selectedBounty.title}
                   </h2>
-                  <div className="flex flex-col justify-between font-normal font-dmSans text-sm my-2 mr-6">
+                  <div className="flex flex-col justify-between font-normal font-DMSans text-sm my-2 mr-6">
                     <p>
                       <span className="text-[#999999]">Start Date: </span>
                       {selectedBounty.startDate}
@@ -150,7 +150,7 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
               </div>
               <div className="flex flex-col mt-2">
                 <h2 className="font-medium  text-lg">Scope</h2>
-                <p className="font-dmSans font-normal text-sm mb-2 text-[#999999]  ">
+                <p className="font-DMSans font-normal text-sm mb-2 text-[#999999]  ">
                   {selectedBounty.description}
                 </p>
               </div>
@@ -161,12 +161,12 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
                   <div className="flex flex-col space-y-2  text-white">
                     <h2 className="font-semibold text-lg">Background</h2>
 
-                    <p className=" font-dmSans font-normal text-sm  text-[#999999] ">
+                    <p className=" font-DMSans font-normal text-sm  text-[#999999] ">
                       {bountyDetail.background}
                     </p>
 
                     <h2 className="font-semibold text-lg">Requirement</h2>
-                    <p className="font-dmSans font-normal text-sm mb-10 text-[#999999] ">
+                    <p className="font-DMSans font-normal text-sm mb-10 text-[#999999] ">
                       {bountyDetail.requirement}
                     </p>
                   </div>
@@ -190,7 +190,7 @@ const BountyDetailModal = ({ isVisible, onClose, selectedBounty }: Props) => {
               <div className="mt-2">
                 <Link
                   href="/creator"
-                  className="font-dmSans btnBackgroundGradient rounded-[8px] w-full h-[40px] items-center justify-center flex flex-row gap-2 font-medium "
+                  className="font-DMSans btnBackgroundGradient rounded-[8px] w-full h-[40px] items-center justify-center flex flex-row gap-2 font-medium "
                 >
                   <p className="">Join Bounty space</p>
                   <BsArrowUpRight className=" w-6 h-6 " />

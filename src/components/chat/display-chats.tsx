@@ -41,18 +41,18 @@ const DisplayChats = (props: { onclick?: any }) => {
   };
 
   return (
-    <div className="w-screen lg:w-[70%] xl:w-[64%] 2xl:w-[72%] overflow-y-auto no-scrollbar">
+    <div className="font-DMSans w-screen lg:w-[70%] xl:w-[64%] 2xl:w-[72%] overflow-y-auto no-scrollbar">
       {/* chat contact */}
-      <div className="w-screen lg:w-[70%]  xl:w-[64%] 2xl:w-[72%]  pl-7 pr-10 py-2 absolute top-0 flex justify-between">
+      <div className="w-screen lg:w-[70%] xl:w-[64%] 2xl:w-[72%] pl-7 pr-10 py-2 absolute top-0 flex justify-between">
         <div className="flex gap-3 items-center">
           <div onClick={props.onclick}>
             <BackButton />
           </div>
           <Image
-            src="/images/user-avatar.png"
-            alt={"avatar"}
             width={48}
             height={48}
+            alt={"avatar"}
+            src="/images/user-avatar.png"
           />
           <p>Victor</p>
         </div>
@@ -68,7 +68,7 @@ const DisplayChats = (props: { onclick?: any }) => {
         className="lg:w-[70%] xl:w-[64%] 2xl:w-[72%] h-[79%] flex flex-col absolute top-20 pl-2 sm:pl-7 pr-2 sm:pr-10 overflow-y-auto no-scrollbar"
       >
         <>
-          <div className="bg-[#242424] text-[#999999] mx-auto py-1 px-3 rounded-md">
+          <div className="bg-[#999999] text-black mx-auto py-1 px-3 rounded-md">
             Yesterday
           </div>
 
@@ -97,7 +97,7 @@ const DisplayChats = (props: { onclick?: any }) => {
           </div>
         </>
         <>
-          <div className="bg-[#242424] text-[#999999] mx-auto py-1 px-3 rounded-md">
+          <div className="bg-[#999999] text-black mx-auto py-1 px-3 rounded-md">
             Today
           </div>
 
@@ -144,10 +144,12 @@ const DisplayChats = (props: { onclick?: any }) => {
       {/* //chat input */}
       <div className="absolute bottom-2 w-screen lg:w-[70%] xl:w-[64%] 2xl:w-[72%] pl-7 pr-10">
         <div
-          className={`flex items-center rounded-full w-[100%] h-auto px-6 py-3 gap-3 text-[#999999] border-zinc-200 border-[1px]`}
+          className={`flex items-center rounded-full w-[100%] h-auto px-6 py-3 gap-3 text-black border-zinc-200 border-[1px]`}
         >
-          <EmojiSVG />
-          <AttachSVG />
+          <div className="cursor-pointer flex gap-3">
+            <EmojiSVG />
+            <AttachSVG />
+          </div>
           <input
             type="text"
             placeholder="Write your message here"
@@ -158,13 +160,12 @@ const DisplayChats = (props: { onclick?: any }) => {
               if (e.key === "Enter") handleSendMessage();
             }}
           />
-          <Image
-            alt="send"
-            width={40}
-            height={20}
-            src="/images/send.png"
+          <p
             onClick={handleSendMessage}
-          />
+            className="font-DMSans bg-gradient-to-r from-[#02EC88] to-[#5CB25D] inline-block text-transparent bg-clip-text cursor-pointer"
+          >
+            SEND
+          </p>
         </div>
       </div>
     </div>

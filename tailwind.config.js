@@ -37,7 +37,7 @@ module.exports = {
       },
 
       fontFamily: {
-        dmSans: ["Dm Sans", "sans-serif"],
+        DMSans: ["DM Sans", "sans-serif"],
       },
     },
   },

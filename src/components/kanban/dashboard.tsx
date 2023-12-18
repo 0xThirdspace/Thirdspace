@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BiPlus } from "react-icons/bi";
 import AddTask from "./addtask";
-import { DashboardSearch } from "../shared";
+import { DashboardSearch, KanbanBoardSVG } from "../shared";
 import Image from "next/image";
 
 const KanbanDashboard = () => {
@@ -13,16 +13,8 @@ const KanbanDashboard = () => {
   return (
     <div className="w-full flex items-center justify-between">
       <div className="flex gap-2 items-center">
-        <Image
-          alt="kanban"
-          src="/images/kanban.png"
-          className="w-[24px] h-[24px] sm:w-[30px] sm:h-[32px]"
-          width={32}
-          height={32}
-        />
-        <p className="text-[20px] sm:text-[38px] font-medium text-[#999999]">
-          Kanban Board
-        </p>
+        <KanbanBoardSVG color={"black"} width={32} />
+        <p className="text-[20px] sm:text-[38px] font-medium">Kanban Board</p>
       </div>
       <div className="flex gap-7 items-center ">
         <div className="hidden xl:flex">
@@ -32,7 +24,7 @@ const KanbanDashboard = () => {
         <div>
           <button
             onClick={displayAddTaskModal}
-            className="relative py-2 pl-2 sm:pl-4 pr-1 sm:pr-2 gap-1 sm:gap-2 flex items-center text-[18px] sm:text-[20px] font-medium rounded-lg buttonLinearBackground"
+            className="relative py-2 pl-2 sm:pl-4 pr-1 sm:pr-2 gap-1 sm:gap-2 flex items-center text-[18px] sm:text-[20px] font-medium rounded-lg bg-gradient-to-r from-[#02EC88] to-[#5CB25D]"
           >
             <p>Add task</p>
             <BiPlus className="w-[24px] h-[24px] " />

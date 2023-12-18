@@ -5,7 +5,7 @@ import type { AppType, AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
 import { useRouter } from "next/router";
-import { SnackbarProvider } from 'notistack';
+import { SnackbarProvider } from "notistack";
 
 import BounterHunter from "@/components/Layout/BounterHunter";
 import CreatorBounties from "@/components/Layout/CreatorBounties";
@@ -94,11 +94,11 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   return getLayout(
     <BountyPlatformContextProvider>
       <WagmiConfig config={wagmiConfig}>
-      <SnackbarProvider>
-      <RainbowKitProvider chains={chains} theme={darkTheme()}>
-          <Component {...pageProps} />
-        </RainbowKitProvider>
-      </SnackbarProvider>
+        <SnackbarProvider>
+          <RainbowKitProvider chains={chains} theme={darkTheme()}>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </SnackbarProvider>
       </WagmiConfig>
     </BountyPlatformContextProvider>
   );

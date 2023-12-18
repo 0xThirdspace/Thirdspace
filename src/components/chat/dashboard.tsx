@@ -12,9 +12,9 @@ const ChatDashboard = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-between text-white">
+    <div className="w-full flex items-center justify-between text-black font-DMSans">
       <div className="flex gap-2 items-center">
-        <ChatSVG />
+        <ChatSVG width={32} color={"black"} />
         <p className="text-[28px] sm:text-[38px] font-bold">Chat</p>
       </div>
       <div className="flex gap-7 items-center ">
@@ -25,7 +25,7 @@ const ChatDashboard = () => {
         <div>
           <button
             onClick={displayNewChatModal}
-            className="relative py-2 pl-2 sm:pl-4 pr-1 sm:pr-2 gap-0 sm:gap-2 flex items-center text-[18px] sm:text-[20px] font-medium rounded-lg buttonLinearBackground"
+            className="relative py-2 pl-2 sm:pl-4 pr-1 sm:pr-2 gap-0 sm:gap-2 flex items-center text-[18px] sm:text-[20px] font-medium rounded-lg bg-gradient-to-r from-[#02EC88] to-[#5CB25D]"
           >
             <p>New chat</p>
             <BiPlus className="w-[24px] h-[24px]" />

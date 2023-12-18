@@ -10,11 +10,11 @@ const CreateBountySpace = (props: Props) => {
     <>
       <div className="h-screen pt-20">
         <div className=" bg-black w-[450px] md:w-[600px] h-[450px] mx-auto flex flex-col pt- items-center  p-14 ">
-          <h2 className="text-white font-semibold text-2xl text-center font-dmSans">
+          <h2 className="text-white font-semibold text-2xl text-center font-DMSans">
             Create Workspace Name
           </h2>
 
-          <p className="text-[#999999] text-center mt-4 font-dmSans font-normal">
+          <p className="text-[#999999] text-center mt-4 font-DMSans font-normal">
             Create your workspace and start collaborating with developers to{" "}
             <br /> get coding tasks completed.
           </p>

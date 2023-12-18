@@ -32,12 +32,12 @@ const GetStartedModal = ({ isVisible, onClose }: Props) => {
           </button>
 
           <div className="  mx-auto flex flex-col  items-center  px-10 md:px-14 py-10">
-            <h2 className="text-white font-bold text-2xl text-center font-dmSans">
+            <h2 className="text-white font-bold text-2xl text-center font-DMSans">
               Get Started
             </h2>
 
             <p
-              className="text-[#999999] text-center mt-4 font-dmSans font-normal
+              className="text-[#999999] text-center mt-4 font-DMSans font-normal
         "
             >
               Find your next coding challenge or create your own. Our platform

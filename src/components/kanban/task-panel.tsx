@@ -11,7 +11,7 @@ import ModalRef from "./modal-ref";
 
 const TaskColumns = [
   { id: 1, title: "To Do", cards_number: 1, color: "zinc-500" },
-  { id: 2, title: "In Progress", cards_number: 4, color: "[#F18413]" },
+  { id: 2, title: "In Progress", cards_number: 4, color: "green-300" },
   { id: 3, title: "Done", cards_number: 2, color: "[#13F129]" },
 ];
 

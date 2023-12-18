@@ -36,7 +36,7 @@ const AvailableBounties = (props: Props) => {
 
       <div className="bg-[#0A0A0A] mx-3 sm:mx-8 mt-8 px-0 py-5 sm:px-5 sm:py-5">
         <div className="flex flex-wrap justify-between">
-          <h2 className="text-white  font-dmSans font-extrabold text-xl md:text-2xl ml-4 md:ml-0">
+          <h2 className="text-white  font-DMSans font-extrabold text-xl md:text-2xl ml-4 md:ml-0">
             Available Bounties
           </h2>
           <div className="flex w-full sm:w-1/2 bg-[#0F0F0F] rounded-full items-center mt-2 sm:mt-0 mr-3 sm:mr-0">

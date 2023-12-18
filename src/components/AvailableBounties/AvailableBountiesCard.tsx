@@ -74,10 +74,10 @@ const AvailableBountiesCard = (props: any) => {
                 />
 
                 <div className="flex flex-col mt-3">
-                  <h2 className="font-dmSans font-bold text-base">
+                  <h2 className="font-DMSans font-bold text-base">
                     {item.title}
                   </h2>
-                  <div className="flex flex-row justify-between font-dmSans text-xs my-2 mr-6">
+                  <div className="flex flex-row justify-between font-DMSans text-xs my-2 mr-6">
                     <p>
                       <span className="text-[#999999]">Start Date: </span>
                       {item.start_date}
@@ -88,7 +88,7 @@ const AvailableBountiesCard = (props: any) => {
                     </p>
                   </div>
 
-                  <p className="font-dmSans font-normal text-xs mb-2 text-[#999999]">
+                  <p className="font-DMSans font-normal text-xs mb-2 text-[#999999]">
                     {item.bounty_description}
                   </p>
                 </div>
@@ -111,10 +111,10 @@ const AvailableBountiesCard = (props: any) => {
                   />
 
                   <div className="flex flex-col">
-                    <h2 className="font-dmSans font-medium text-base">
+                    <h2 className="font-DMSans font-medium text-base">
                       {item.title}
                     </h2>
-                    <div className="flex flex-col font-dmSans font-medium text-xs space-y-1 mt-2">
+                    <div className="flex flex-col font-DMSans font-medium text-xs space-y-1 mt-2">
                       <p>
                         <span className="text-[#999999]">Start Date: </span>
                         {item.start_date}
@@ -126,7 +126,7 @@ const AvailableBountiesCard = (props: any) => {
                     </div>
                   </div>
                 </div>
-                <p className="font-dmSans mt-4 font-normal text-xs mb-2 text-[#999999]">
+                <p className="font-DMSans mt-4 font-normal text-xs mb-2 text-[#999999]">
                   {item.bounty_description}
                 </p>
 

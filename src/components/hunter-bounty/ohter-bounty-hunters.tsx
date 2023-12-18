@@ -10,81 +10,81 @@ const Bountyhunters = () => {
       avatar: "/images/user-avatar.png",
     },
     {
-      id: 1,
+      id: 2,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
     },
     {
-      id: 1,
+      id: 3,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
     },
     {
-      id: 1,
+      id: 4,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
     },
     {
-      id: 1,
+      id: 5,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
     },
     {
-      id: 1,
+      id: 6,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
     },
     {
-      id: 1,
+      id: 7,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
     },
     {
-      id: 1,
+      id: 8,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
     },
     {
-      id: 1,
-      name: "Frank Quibigs",
-      social: "@Quibigs",
-      avatar: "/images/user-avatar.png",
-    },
-
-    {
-      id: 1,
-      name: "Frank Quibigs",
-      social: "@Quibigs",
-      avatar: "/images/user-avatar.png",
-    },
-    {
-      id: 1,
-      name: "Frank Quibigs",
-      social: "@Quibigs",
-      avatar: "/images/user-avatar.png",
-    },
-    {
-      id: 1,
-      name: "Frank Quibigs",
-      social: "@Quibigs",
-      avatar: "/images/user-avatar.png",
-    },
-    {
-      id: 1,
+      id: 9,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
     },
 
     {
-      id: 1,
+      id: 10,
+      name: "Frank Quibigs",
+      social: "@Quibigs",
+      avatar: "/images/user-avatar.png",
+    },
+    {
+      id: 11,
+      name: "Frank Quibigs",
+      social: "@Quibigs",
+      avatar: "/images/user-avatar.png",
+    },
+    {
+      id: 12,
+      name: "Frank Quibigs",
+      social: "@Quibigs",
+      avatar: "/images/user-avatar.png",
+    },
+    {
+      id: 13,
+      name: "Frank Quibigs",
+      social: "@Quibigs",
+      avatar: "/images/user-avatar.png",
+    },
+
+    {
+      id: 14,
       name: "Frank Quibigs",
       social: "@Quibigs",
       avatar: "/images/user-avatar.png",
@@ -98,7 +98,10 @@ const Bountyhunters = () => {
       <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
         {HuntersData.map((data) => {
           return (
-            <div className="flex flex-row items-center gap-2 text-lg mt-12">
+            <div
+              key={data.id}
+              className="flex flex-row items-center gap-2 text-lg mt-12"
+            >
               <Image
                 width={60}
                 height={60}

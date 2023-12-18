@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/utils/constants";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useSnackbar } from 'notistack';
+import { useSnackbar } from "notistack";
 import GetStartedModal from "./GetStartedModal";
 import { useRouter } from "next/router";
 import { getCsrfToken, signIn, useSession } from "next-auth/react";
@@ -9,15 +9,15 @@ import { Context } from "vm";
 
 type Props = {};
 
-const SignInForm = ({csrfToken} : any) => {
+const SignInForm = ({ csrfToken }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [getStarted, setGetStarted] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
-  const router = useRouter()
-  const { data: session } = useSession()
+  const router = useRouter();
+  const { data: session } = useSession();
   // console.log(session?.user.token )
 
   const emailChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,48 +29,41 @@ const SignInForm = ({csrfToken} : any) => {
   };
 
   const checkFormValidity = () => {
-    if (
-      email.trim() == "" &&
-      !email.includes("@") &&
-      password.trim() == ""
-    ){
+    if (email.trim() == "" && !email.includes("@") && password.trim() == "") {
       enqueueSnackbar("All fields are required!");
-      return
+      return;
     }
   };
 
   const payLoad = {
-    "email" : email,
-    "password": password
-  }
+    email: email,
+    password: password,
+  };
 
   const formSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    checkFormValidity()
+    checkFormValidity();
     setIsLoading(true);
 
     try {
-     const user = await signIn(
-        "credentials",
-        {
-         ...payLoad,
-         redirect: false,
-          // callbackUrl: "/signin"
-        },
-      )
-      console.log(user )
-      if(!user?.ok){
+      const user = await signIn("credentials", {
+        ...payLoad,
+        redirect: false,
+        // callbackUrl: "/signin"
+      });
+      console.log(user);
+      if (!user?.ok) {
         setIsLoading(false);
         enqueueSnackbar("Incorrect login credentials", {
           autoHideDuration: 5000,
-          variant: "error"
-        })
-        return
+          variant: "error",
+        });
+        return;
       }
-      setGetStarted(true)
+      setGetStarted(true);
       enqueueSnackbar("Successfully logged in", {
-        variant: "success"
-      })
+        variant: "success",
+      });
       // router.push("/available-bounties")
       setEmail("");
       setPassword("");
@@ -79,15 +72,15 @@ const SignInForm = ({csrfToken} : any) => {
       setIsLoading(false);
       enqueueSnackbar(`An error occured ${error}`, {
         autoHideDuration: 3000,
-        variant: "error"
-      })
-      return
+        variant: "error",
+      });
+      return;
     }
   };
 
   return (
     <>
-      <form onSubmit={formSubmitHandler} action="" className="font-dmSans">
+      <form onSubmit={formSubmitHandler} action="" className="font-DMSans">
         <div className="space-y-[8px] md:space-y-[16px] ">
           <div className="flex flex-col space-y-1">
             <input type="hidden" name="csrfToken" defaultValue={csrfToken} />
@@ -129,12 +122,12 @@ const SignInForm = ({csrfToken} : any) => {
           </div>
         </div>
 
-          <button
-            type="submit"
-            className="mt-[30px] md:mt-[50px]  item just hover:btnBackgroundGradient bg-[#141414] cursor-pointer rounded-[8px] h-[50px] w-full  font-semibold  text-base md:text-lg "
-          >
-            Proceed
-          </button>
+        <button
+          type="submit"
+          className="mt-[30px] md:mt-[50px]  item just hover:btnBackgroundGradient bg-[#141414] cursor-pointer rounded-[8px] h-[50px] w-full  font-semibold  text-base md:text-lg "
+        >
+          Proceed
+        </button>
         <div className="flex flex-row  gap-2 items-center justify-center mt-4 text-base">
           <p className="font-normal text-base md:font-medium md:text-lg">
             {" "}
@@ -154,18 +147,19 @@ const SignInForm = ({csrfToken} : any) => {
             </div>
           </div>
         )}
-        <GetStartedModal isVisible={getStarted} onClose={() => setGetStarted(false)}/>
+        <GetStartedModal
+          isVisible={getStarted}
+          onClose={() => setGetStarted(false)}
+        />
       </form>
     </>
   );
 };
 
-SignInForm.getInitialProps = async(context: Context) =>{
-  return{
-    csrfToken: await getCsrfToken(context)
-  } 
-}
+SignInForm.getInitialProps = async (context: Context) => {
+  return {
+    csrfToken: await getCsrfToken(context),
+  };
+};
 
 export default SignInForm;
-
-
