@@ -12,7 +12,7 @@ import CreatorSidebarMobile from "@/components/Sidebar/creator-mobile";
 
 const KanbanComponent = () => {
   return (
-    <main className="w-full h-auto bg-black-500">
+    <main className="font-DMSans w-full h-auto bg-white text-black">
       <section className="flex items-center gap-5 sm:gap-10">
         <CreatorSidebarMobile />
         <KanbanDashboard />
@@ -37,7 +37,7 @@ const KanbanComponent = () => {
               WebkitAppearance: "none",
               appearance: "none",
             }}
-            className="w-[230px] py-[9px] none -mr-[10px] pl-4 text-[18px] border-[1px] border-zinc-300  font-normal bg-black text-white focus:[#873ab3] focus:[#873ab3] focus:ring-1"
+            className="w-[230px] py-[9px] none -mr-[10px] pl-4 text-[18px] border-[1px] border-zinc-300  font-normal bg-white text-black focus:[#873ab3] focus:[#873ab3] focus:ring-1"
           >
             <option>Assignee</option>
             {[
@@ -72,7 +72,7 @@ const KanbanComponent = () => {
               WebkitAppearance: "none",
               appearance: "none",
             }}
-            className="w-[230px] py-[9px] none -mr-[10px] pl-4 text-[18px] border-[1px] border-zinc-300  font-normal bg-black text-white focus:[#873ab3] focus:[#873ab3] focus:ring-1"
+            className="w-[230px] py-[9px] none -mr-[10px] pl-4 text-[18px] border-[1px] border-zinc-300  font-normal bg-white text-black focus:[#873ab3] focus:[#873ab3] focus:ring-1"
           >
             <option>Due Date</option>
             {[
@@ -111,7 +111,7 @@ const Index = () => {
   return (
     <div>
       <CreatorSidebarDesktop>
-        <div className="pt-6 lg:pt-12 px-4 sm:px-7">
+        <div className="pt-6 lg:pt-12 px-4 sm:px-7 bg-white">
           <KanbanComponent />
         </div>
       </CreatorSidebarDesktop>

@@ -21,10 +21,8 @@ const ChatComponent = () => {
   };
 
   return (
-    // pt-6 lg:pt-12 px-4 sm:px-7
-
-    <main className="w-full h-screen ">
-      <section className="h-[16%] sm:h-[18%] md:h-[21%] xl:h-[15%] border-b-[1px] border-zinc-300  bg-black pt-6 lg:pt-12 px-4 sm:px-8 md:px-12">
+    <main className="font-DMSans w-full h-screen bg-white text-black">
+      <section className="h-[16%] sm:h-[18%] md:h-[21%] xl:h-[15%] border-b-[1px] border-zinc-300 pt-6 lg:pt-12 px-4 sm:px-8 md:px-12">
         <section className="flex items-center gap-5 sm:gap-10">
           <CreatorSidebarMobile />
           <ChatDashboard />
@@ -43,10 +41,10 @@ const ChatComponent = () => {
 
       {/* chat display */}
       <section className="relative mt-4 flex h-[82%] sm:h-[80%] md:h-[77%] xl:h-[83%] w-[100%]">
-        <div className="bg-[#242424] rounded-md px-1 sm:px-2 py-3 w-[100%] xl:w-[36%] 2xl:w-[28%] h-full overflow-y-auto no-scrollbar">
+        <div className="bg-[#F4F0F0] rounded-md px-1 sm:px-2 py-3 w-[100%] xl:w-[36%] 2xl:w-[28%] h-full overflow-y-auto no-scrollbar">
           <div className="flex items-center justify-between px-2 pt-2 pb-5 border-b-[1px] border-zinc-50">
             <div
-              className={`w-[160px] flex items-center rounded-full h-[45px] px-6 py-2 gap-2 text-[#999999] bg-zinc-900`}
+              className={`w-[160px] flex items-center rounded-full h-[45px] px-6 py-2 gap-2 text-[#999] bg-inherit border-[1px] border-[#999]`}
             >
               <SearchSVG />
               <input
@@ -57,7 +55,7 @@ const ChatComponent = () => {
             </div>
             <div
               onClick={displayNewGroupModal}
-              className="flex gap-1 text-[14px] font-bold"
+              className="flex gap-1 text-[14px] font-bold cursor-pointer"
             >
               New group <BiPlus className="w-[24px] h-[24px]" />
             </div>
@@ -145,19 +143,19 @@ const ChatComponent = () => {
               },
               {
                 id: 14,
-                name: "Eric",
+                name: "Eric & Ayo",
                 chat: "You can't catch me",
                 time: "02:35",
               },
             ].map((list) => {
               return (
                 <section
-                  onClick={() => setOpenChat(true)}
                   key={list.id}
+                  onClick={() => setOpenChat(true)}
                   className="w-full h-[75px] flex items-center justify-between"
                 >
                   <div className="flex items-center justify-center gap-2">
-                    <div className="relative bg-white w-[60px] h-[60px] rounded-full">
+                    <div className="relative w-[60px] h-[60px] rounded-full">
                       <Image
                         width={60}
                         height={60}
@@ -181,16 +179,16 @@ const ChatComponent = () => {
                       </div>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <p className="text-[11px] ">{list.name}</p>
-                      <p className="text-[14px] min-w-[150px] max-w-[180px] sm:min-w-[auto] sm:max-w-[auto] sm:w-full xl:w-[180px] truncate text-ellipsis overflow-hidden ... ">
+                      <p className="text-[12px] font-extrabold">{list.name}</p>
+                      <p className="text-[14px] min-w-[150px] font-normal max-w-[180px] sm:min-w-[auto] sm:max-w-[auto] sm:w-full xl:w-[180px] truncate text-ellipsis overflow-hidden ... ">
                         {list.chat}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-center justify-center w-auto max-w-[35px] text-[11px]  ">
+                  <div className="flex flex-col items-center justify-center w-auto max-w-[35px] gap-[4px] text-[11px] text-[#999]">
                     <p>13mins</p>
-                    <p className="bg-[#13F129] w-[20px] h-[20px] py-[2px] rounded-full text-center ">
+                    <p className="bg-[#13F129] w-[20px] h-[20px] py-[2px] rounded-full text-center text-black">
                       99
                     </p>
                   </div>
@@ -200,7 +198,7 @@ const ChatComponent = () => {
 
             <div className="">
               {openChat && (
-                <div className="absolute flex xl:hidden top-0 left-0 z-50 w-screen h-[100%] bg-black">
+                <div className="absolute flex xl:hidden top-0 left-0 z-50 w-screen h-[100%] bg-white">
                   <DisplayChats onclick={toggleOpenChat} />
                 </div>
               )}

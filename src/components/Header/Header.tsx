@@ -6,9 +6,9 @@ import { logo, bountyButton, modeIcon } from "@/assets";
 const Header = () => {
   return (
     <div className="hidden md:block lg:block xl:block 2xl:block font-bold absolute top-0 left-0 w-full bg-opacity-75 p-4 ">
-      <div className="flex justify-around font-dmSans pt-10 px-4">
+      <div className="flex justify-around font-DMSans pt-10 px-4">
         <Image src={logo} alt="logo" width={180} className="md:w-36 lg:w-48" />
-        <div className="flex font-dmSans md:text-">
+        <div className="flex font-DMSans md:text-">
           {NavItems.map((item, index) => (
             <div className="" key={index}>
               <Link

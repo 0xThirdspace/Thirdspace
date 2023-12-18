@@ -26,7 +26,7 @@ const NavDrawer = () => {
         <AiOutlineMenu color="white" size={24} onClick={toggleMobile} />
         {show ? (
           <div className="fixed inset-0  h-screen bg-black text-white block ">
-            <div className="flex flex-col  mt-10 font-dmSans text-lg m-8 ">
+            <div className="flex flex-col  mt-10 font-DMSans text-lg m-8 ">
               <div className="flex justify-between">
                 <Image src={logo} alt="logo" width={150} />
                 <AiOutlineCloseCircle

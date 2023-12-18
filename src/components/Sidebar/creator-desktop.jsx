@@ -1,37 +1,37 @@
 import Link from "next/link";
-
 import { useRouter } from "next/router";
 
-import { FaMedal } from "react-icons/fa";
-import { BsFillGearFill } from "react-icons/bs";
-import { IoPeopleSharp } from "react-icons/io";
-
-import React, { ReactNode } from "react";
+import React from "react";
 import {
-  Avatar,
   Menu,
-  MenuButton,
+  Avatar,
+  Portal,
   MenuItem,
   MenuList,
-  Portal,
+  MenuButton,
 } from "@chakra-ui/react";
-import Logo from "../Ui/Logo";
-import { logo } from "@/assets";
+import { syncteam_white } from "@/assets";
 import Image from "next/image";
+import { KanbanBoardSVG } from "../shared";
 
 export const kanbanItems = [
-  { id: "chat", text: "Chat", link: "/chat", icon: "/images/chat-logo.png" },
+  {
+    id: "chat",
+    text: "Chat",
+    link: "/chat",
+    icon: "/images/chat-logo.png",
+  },
   {
     id: "payroll",
     text: "Payroll",
     link: "/payroll",
-    icon: "/images/payroll-logo.png",
+    icon: "/images/payroll-logo-black.png",
   },
   {
-    id: "teams",
+    id: "bounties",
     text: "Bounties",
     link: "/bounty-creator",
-    icon: "/images/bounty.svg",
+    icon: "/images/outsource-logo-black.png",
   },
 ];
 
@@ -40,13 +40,13 @@ export const iconItems = [
     id: "teams",
     text: "Teams",
     link: "/teams",
-    icon: "/images/teams-logo.png",
+    icon: "/images/teams-logo-black.png",
   },
   {
     id: "settings",
     text: "Settings",
     link: "/settings",
-    icon: "/images/settings-logo.png",
+    icon: "/images/settings-logo-black.png",
   },
 ];
 
@@ -54,12 +54,12 @@ const CreatorSidebarDesktop = ({ children }) => {
   // const router = useRouter();
 
   return (
-    <div className="flex font-nexa h-screen">
+    <div className="font-DMSans flex font-nexa h-screen bg-[#F7F7F7] text-black">
       {/* fixed side */}
-      <div className="pt-6 lg:pt-12 w-[30%] max-w-[320px] p-4 hidden lg:flex flex-col justify-between bg-[#0F0F0F] border-black/60 border-r-[1px]">
+      <div className="pt-6 lg:pt-12 w-[30%] max-w-[320px] p-4 hidden lg:flex flex-col justify-between">
         {/* we will have the sidebar here  */}
         <Link href="#">
-          <div className="flex item-center justify-evenly text-center text-xl  text-white p-3 rounded-lg">
+          <div className="flex item-center justify-evenly text-center text-xl p-3 rounded-lg">
             <Avatar
               size="sm"
               alt="workspace avatar"
@@ -73,16 +73,12 @@ const CreatorSidebarDesktop = ({ children }) => {
         <div className="h-full flex flex-col justify-center items-start mx-4">
           <Link
             href="/kanban"
-            className="py-3 px-4 text-center text-xl text-gray-500 inline-flex items-center border-b-[1px] border-zinc-500 w-full hover:text-white hover:bg-zinc-900"
+            className="py-3 px-4 text-center text-xl inline-flex items-center border-b-[1px] border-zinc-500 w-full hover:text-black hover:bg-white"
           >
-            <Image
-              width={20}
-              height={20}
-              alt="kanban"
-              src="/images/kanban.png"
-              className="w-[20px] h-[20px] mr-3"
-            />
-            <p className="">Kanban Board</p>
+            <div className="mr-3">
+              <KanbanBoardSVG color="#0F0F0F" width={20} />
+            </div>
+            <p>Kanban Board</p>
             <DisplayAction />
           </Link>
 
@@ -94,7 +90,7 @@ const CreatorSidebarDesktop = ({ children }) => {
               <ul>
                 <Link
                   href={list.link}
-                  className="px-4 flex items-center text-gray-500 hover:text-white hover:bg-zinc-900 font-nexa"
+                  className="px-4 flex items-center text-gray-500 hover:text-black hover:bg-white font-nexa"
                 >
                   <Image
                     width={24}
@@ -102,8 +98,8 @@ const CreatorSidebarDesktop = ({ children }) => {
                     alt="kanban"
                     src={list.icon}
                     className="w-[24px] h-[24px] -mr-[3px]"
-                  />{" "}
-                  <p className="text-center text-xl cursor-pointer my-1 p-3 rounded-lg inline-block">
+                  />
+                  <p className="text-black text-center text-xl cursor-pointer my-1 p-3 rounded-lg inline-block">
                     {list.text}
                   </p>
                 </Link>
@@ -118,7 +114,7 @@ const CreatorSidebarDesktop = ({ children }) => {
               <ul key={list.id}>
                 <Link
                   href={list.link}
-                  className="px-4 flex items-center text-gray-500 hover:text-white hover:bg-zinc-900 font-nexa"
+                  className="px-4 flex items-center text-gray-500 hover:text-black hover:bg-white font-nexa"
                 >
                   <Image
                     width={24}
@@ -127,7 +123,7 @@ const CreatorSidebarDesktop = ({ children }) => {
                     src={list.icon}
                     className="w-[24px] h-[24px] -mr-[3px]"
                   />{" "}
-                  <p className="text-center text-xl  cursor-pointer my-1 p-3 rounded-lg inline-block">
+                  <p className="text-black text-center text-xl  cursor-pointer my-1 p-3 rounded-lg inline-block">
                     {list.text}
                   </p>
                 </Link>
@@ -137,7 +133,7 @@ const CreatorSidebarDesktop = ({ children }) => {
         </div>
 
         <div className="ml-4 mb-10">
-          <Image src={logo} alt="logo" width={180} />
+          <Image src={syncteam_white} alt="logo" width={180} />
         </div>
       </div>
       <main className="overflow-y-auto left-[300px] bg-black flex-1 w-full lg:w-[70%] h-[100%] !font-nexa text-white">
@@ -156,7 +152,7 @@ const DisplayAction = () => {
           // _focus={{ boxShadow: 'none' }}
           className="text-center  mx-auto "
         >
-          <i className="text-lg fas fa-ellipsis-v w-4 text-gray-400 hover:text-gray-950" />
+          <i className="text-lg fas fa-ellipsis-v w-4 hover:text-gray-950" />
         </MenuButton>
         <Portal>
           <MenuList

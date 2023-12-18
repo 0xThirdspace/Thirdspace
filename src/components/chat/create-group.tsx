@@ -13,14 +13,14 @@ import React, { useState } from "react";
 
 export const ChatOptions = () => {
   return (
-    <div className="w-full text-[14px] font-normal bg-[#3F3F3F] text-white">
+    <div className="w-full text-[14px] font-normal bg-white">
       <main className="flex items-center w-full h-[40px] ">
         <select
           style={{
             WebkitAppearance: "none",
             appearance: "none",
           }}
-          className="w-full h-[40px] none -mr-[10px] pl-4 text-[14px] border-[1px] border-zinc-300  font-normal bg-[#3F3F3F] text-white focus:[#873ab3] focus:[#873ab3] focus:ring-1"
+          className="w-full h-[40px] none -mr-[10px] pl-4 text-[14px] border-[1px] border-zinc-300  font-normal text-[#3F3F3F] bg-white focus:[#873ab3] focus:[#873ab3] focus:ring-1"
         >
           <option>Add members</option>
           <option>Eric</option>
@@ -37,8 +37,8 @@ export const ChatOptions = () => {
 
 const CreateGroup = (props: { onclick: any }) => {
   return (
-    <div className="text-white font-normal h-screen w-screen overflow-y-auto flex items-center justify-center">
-      <div className="bg-[#0F0F0F] rounded-md h-auto w-screen mx-4 sm:mx-0 sm:w-[586px] md:w-[700px] flex flex-col items-center">
+    <div className="font-DMSans text-black font-normal h-screen w-screen overflow-y-auto flex items-center justify-center bg-[#EEE]">
+      <div className="bg-white rounded-md h-auto w-screen mx-4 sm:mx-0 sm:w-[586px] md:w-[700px] flex flex-col items-center">
         <div onClick={props.onclick} className="py-[28px] self-end pr-[28px]">
           <CloseBtn />
         </div>
@@ -48,7 +48,7 @@ const CreateGroup = (props: { onclick: any }) => {
           Start a new group
         </p>
 
-        <form className="w-full px-4 sm:px-12 md:px-28  text-[#999] text-sm flex flex-col gap-[10px] pb-12 ">
+        <form className="w-full px-4 sm:px-12 md:px-28  text-[#999] text-sm flex flex-col gap-[10px] pb-12 bg-white">
           <InputField type="text" placeholder="Group title" />
 
           <ChatOptions />
@@ -65,24 +65,20 @@ const CreateGroup = (props: { onclick: any }) => {
           <Link
             href="/chat/#"
             onClick={props.onclick}
-            className="buttonLinearBackground w-full flex items-center justify-center py-3 gap-5 sm:gap-4 text-[16px] font-bold rounded-lg"
+            className="bg-gradient-to-r from-[#02EC88] to-[#5CB25D] text-white w-full flex items-center justify-center py-3 gap-5 sm:gap-4 text-[16px] font-bold rounded-lg"
           >
             <p>Create</p>
-            <ArrowRightDiagonalBtn />
+            <ArrowRightDiagonalBtn color={"white"} />
           </Link>
         </div>
 
         <div className="w-full px-3 sm:px-8 md:px-24 flex items-center justify-center pb-20 ">
           <button className="w-full flex items-center justify-center py-3 gap-5 sm:gap-4 text-[16px] font-bold rounded-lg">
-            <div onClick={props.onclick}>
-              <StartNewChatSVG />
+            <div className="bg-gradient-to-r from-[#02EC88] to-[#5CB25D] inline-block text-transparent bg-clip-text">
+              Start new chat instead
             </div>
-            <Image
-              width={24}
-              height={24}
-              alt="create-grp-btn"
-              src="/images/arrow-outward.svg"
-            />
+
+            <ArrowRightDiagonalBtn color="#5CB25D" />
           </button>
         </div>
       </div>

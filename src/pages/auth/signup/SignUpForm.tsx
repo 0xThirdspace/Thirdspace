@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Router from "next/router";
-import { useSnackbar } from 'notistack';
+import { useSnackbar } from "notistack";
 import { success } from "@/assets";
 import { BASE_URL } from "@/utils/constants";
 
@@ -34,23 +34,23 @@ const SignUpForm = (props: Props) => {
       !email.includes("@") &&
       password.trim() == "" &&
       fullName.trim() == ""
-    ){
+    ) {
       enqueueSnackbar("All fields are required!");
-      return
+      return;
     }
   };
 
   const payLoad = {
-    "name": fullName,
-    "email": email,
-    "password": password
-  }
+    name: fullName,
+    email: email,
+    password: password,
+  };
 
   const formSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsLoading(true);
-    checkFormValidity()
+    checkFormValidity();
     try {
       const response = await fetch(`${BASE_URL}/auth/signUp`, {
         method: "POST",
@@ -60,34 +60,34 @@ const SignUpForm = (props: Props) => {
         },
       });
       const data = await response.json();
-      if(!response.ok){
+      if (!response.ok) {
         setIsLoading(false);
         enqueueSnackbar(data, {
           autoHideDuration: 3000,
-          variant: "error"
-        })
-        return
+          variant: "error",
+        });
+        return;
       }
 
       setIsLoading(false);
       enqueueSnackbar("Successfully added", success);
-      Router.push("/signin")
+      Router.push("/signin");
       setEmail("");
       setPassword("");
       setFullName("");
     } catch (err) {
-      setIsLoading(false);   
+      setIsLoading(false);
       enqueueSnackbar(`An error occured ${err}`, {
         autoHideDuration: 3000,
-        variant: "error"
-      })
-      return
+        variant: "error",
+      });
+      return;
     }
   };
 
   return (
     <>
-      <form onSubmit={formSubmitHandler} action="" className="font-dmSans">
+      <form onSubmit={formSubmitHandler} action="" className="font-DMSans">
         <div className="space-y-[8px] md:space-y-[16px] ">
           <div className="flex flex-col space-y-1">
             <label
@@ -169,7 +169,7 @@ const SignUpForm = (props: Props) => {
               </div>
             </div>
           </div>
-        ): null }
+        ) : null}
       </form>
     </>
   );

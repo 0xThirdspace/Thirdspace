@@ -29,11 +29,11 @@ export const InputField = (props: {
   placeholder: any;
 }) => {
   return (
-    <div className="text-[14px] font-normal bg-[#3F3F3F] text-white">
-      <p className="pb-[10px] bg-[#0F0F0F] text-[#999]">{props.tag}</p>
+    <div className="text-[14px] font-normal bg-white text-black">
+      <p className="pb-[10px] text-[#999]">{props.tag}</p>
       <input
         type={props.type}
-        className="h-auto py-[9px] px-4 border-[1px] border-zinc-400 focus:outline-none focus:[#873ab3] focus:[#873ab3] focus:ring-1"
+        className="h-auto py-[9px] px-4 border-[1px] border-zinc-300 focus:outline-none focus:[#873ab3] focus:[#873ab3] focus:ring-1 bg-white"
         placeholder={props.placeholder}
       />
     </div>
@@ -42,14 +42,48 @@ export const InputField = (props: {
 
 export const TextArea = (props: { tag?: string; placeholder: string }) => {
   return (
-    <div className="w-full text-[14px] font-normal bg-[#3F3F3F] text-white   ">
-      <p className="pb-[10px] bg-[#0F0F0F] text-[#999]">{props.tag}</p>
+    <div className="w-full text-[14px] font-normal bg-white text-black   ">
+      <p className="pb-[10px] text-[#999]">{props.tag}</p>
 
       <textarea
         placeholder={props.placeholder}
-        className="w-full text-[14px] font-normal bg-[#3F3F3F] text-white p-4 -mb-1 border-[1px] border-zinc-400 focus:outline-none focus:[#873ab3] focus:[#873ab3] focus:ring-1"
+        className="w-full text-[14px] font-normal bg-white text-black p-4 -mb-1 border-[1px] border-zinc-300 focus:outline-none focus:[#873ab3] focus:[#873ab3] focus:ring-1"
       />
     </div>
+  );
+};
+
+export const KanbanBoardSVG = ({
+  color,
+  width,
+}: {
+  color: string;
+  width: number;
+}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={width}
+      viewBox="0 0 32 32"
+      fill="none"
+    >
+      <g clip-path="url(#clip0_35_2585)">
+        <path
+          d="M27 2C27.5304 2 28.0391 2.21071 28.4142 2.58579C28.7893 2.96086 29 3.46957 29 4V28C29 28.5304 28.7893 29.0391 28.4142 29.4142C28.0391 29.7893 27.5304 30 27 30H5C4.46957 30 3.96086 29.7893 3.58579 29.4142C3.21071 29.0391 3 28.5304 3 28V4C3 3.46957 3.21071 2.96086 3.58579 2.58579C3.96086 2.21071 4.46957 2 5 2H27ZM5 0C3.93913 0 2.92172 0.421427 2.17157 1.17157C1.42143 1.92172 1 2.93913 1 4V28C1 29.0609 1.42143 30.0783 2.17157 30.8284C2.92172 31.5786 3.93913 32 5 32H27C28.0609 32 29.0783 31.5786 29.8284 30.8284C30.5786 30.0783 31 29.0609 31 28V4C31 2.93913 30.5786 1.92172 29.8284 1.17157C29.0783 0.421427 28.0609 0 27 0L5 0Z"
+          fill={color}
+        />
+        <path
+          d="M13 6C13 5.46957 13.2107 4.96086 13.5858 4.58579C13.9609 4.21071 14.4696 4 15 4H17C17.5304 4 18.0391 4.21071 18.4142 4.58579C18.7893 4.96086 19 5.46957 19 6V12C19 12.5304 18.7893 13.0391 18.4142 13.4142C18.0391 13.7893 17.5304 14 17 14H15C14.4696 14 13.9609 13.7893 13.5858 13.4142C13.2107 13.0391 13 12.5304 13 12V6ZM5 6C5 5.46957 5.21071 4.96086 5.58579 4.58579C5.96086 4.21071 6.46957 4 7 4H9C9.53043 4 10.0391 4.21071 10.4142 4.58579C10.7893 4.96086 11 5.46957 11 6V20C11 20.5304 10.7893 21.0391 10.4142 21.4142C10.0391 21.7893 9.53043 22 9 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6ZM21 6C21 5.46957 21.2107 4.96086 21.5858 4.58579C21.9609 4.21071 22.4696 4 23 4H25C25.5304 4 26.0391 4.21071 26.4142 4.58579C26.7893 4.96086 27 5.46957 27 6V26C27 26.5304 26.7893 27.0391 26.4142 27.4142C26.0391 27.7893 25.5304 28 25 28H23C22.4696 28 21.9609 27.7893 21.5858 27.4142C21.2107 27.0391 21 26.5304 21 26V6Z"
+          fill={color}
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_35_2585">
+          <rect width="32" height="32" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
   );
 };
 
@@ -107,7 +141,7 @@ export const AttachSVG = () => {
 export const DashboardSearch = (props: { width: string }) => {
   return (
     <div
-      className={`${props.width} flex items-center rounded-full h-[45px] px-6 py-2 gap-2 text-[#999999] bg-zinc-900`}
+      className={`${props.width} flex items-center rounded-full h-[45px] px-6 py-1.5 gap-2 text-[#999999] bg-white border-[#999999] border-[1px]`}
     >
       <SearchSVG />
       <input
@@ -161,7 +195,7 @@ export const ThreeDotIcon = () => {
     >
       <path
         d="M3.75 11.875C3.25272 11.875 2.77581 11.6775 2.42417 11.3258C2.07254 10.9742 1.875 10.4973 1.875 10C1.875 9.50272 2.07254 9.02581 2.42417 8.67417C2.77581 8.32254 3.25272 8.125 3.75 8.125C4.24728 8.125 4.72419 8.32254 5.07583 8.67417C5.42746 9.02581 5.625 9.50272 5.625 10C5.625 10.4973 5.42746 10.9742 5.07583 11.3258C4.72419 11.6775 4.24728 11.875 3.75 11.875ZM10 11.875C9.50272 11.875 9.02581 11.6775 8.67417 11.3258C8.32254 10.9742 8.125 10.4973 8.125 10C8.125 9.50272 8.32254 9.02581 8.67417 8.67417C9.02581 8.32254 9.50272 8.125 10 8.125C10.4973 8.125 10.9742 8.32254 11.3258 8.67417C11.6775 9.02581 11.875 9.50272 11.875 10C11.875 10.4973 11.6775 10.9742 11.3258 11.3258C10.9742 11.6775 10.4973 11.875 10 11.875ZM16.25 11.875C15.7527 11.875 15.2758 11.6775 14.9242 11.3258C14.5725 10.9742 14.375 10.4973 14.375 10C14.375 9.50272 14.5725 9.02581 14.9242 8.67417C15.2758 8.32254 15.7527 8.125 16.25 8.125C16.7473 8.125 17.2242 8.32254 17.5758 8.67417C17.9275 9.02581 18.125 9.50272 18.125 10C18.125 10.4973 17.9275 10.9742 17.5758 11.3258C17.2242 11.6775 16.7473 11.875 16.25 11.875Z"
-        fill="white"
+        fill="black"
       />
     </svg>
   );
@@ -203,7 +237,7 @@ export const PlusIcon = () => {
     >
       <path
         d="M19 12.998H13V18.998H11V12.998H5V10.998H11V4.99805H13V10.998H19V12.998Z"
-        fill="white"
+        fill="black"
       />
     </svg>
   );
@@ -299,7 +333,7 @@ export const CloseBtn = () => {
       <g clip-path="url(#clip0_1112_758)">
         <path
           d="M3.516 20.484C2.36988 19.377 1.45569 18.0529 0.826781 16.5889C0.197873 15.1248 -0.133162 13.5502 -0.147008 11.9568C-0.160854 10.3635 0.142767 8.78331 0.746137 7.30855C1.34951 5.83379 2.24055 4.49397 3.36726 3.36726C4.49397 2.24055 5.83379 1.34951 7.30855 0.746137C8.78331 0.142767 10.3635 -0.160854 11.9568 -0.147008C13.5502 -0.133162 15.1248 0.197873 16.5889 0.826781C18.0529 1.45569 19.377 2.36988 20.484 3.516C22.6699 5.77922 23.8794 8.81045 23.8521 11.9568C23.8247 15.1032 22.5627 18.1129 20.3378 20.3378C18.1129 22.5627 15.1032 23.8247 11.9568 23.8521C8.81045 23.8794 5.77922 22.6699 3.516 20.484ZM5.208 18.792C7.00935 20.5933 9.4525 21.6053 12 21.6053C14.5475 21.6053 16.9906 20.5933 18.792 18.792C20.5933 16.9906 21.6053 14.5475 21.6053 12C21.6053 9.4525 20.5933 7.00935 18.792 5.208C16.9906 3.40665 14.5475 2.39466 12 2.39466C9.4525 2.39466 7.00935 3.40665 5.208 5.208C3.40665 7.00935 2.39466 9.4525 2.39466 12C2.39466 14.5475 3.40665 16.9906 5.208 18.792ZM17.088 8.604L13.692 12L17.088 15.396L15.396 17.088L12 13.692L8.604 17.088L6.912 15.396L10.308 12L6.912 8.604L8.604 6.912L12 10.308L15.396 6.912L17.088 8.604Z"
-          fill="white"
+          fill="black"
         />
       </g>
       <defs>
@@ -328,7 +362,7 @@ export const AcceptBtn = () => {
   );
 };
 
-export const ArrowRightDiagonalBtn = () => {
+export const ArrowRightDiagonalBtn = ({ color }: { color: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -339,7 +373,7 @@ export const ArrowRightDiagonalBtn = () => {
     >
       <path
         d="M1.29231 12L0 10.7077L8.86154 1.84615H0.923077V0H12V11.0769H10.1538V3.13846L1.29231 12Z"
-        fill="white"
+        fill={color}
       />
     </svg>
   );
@@ -359,18 +393,18 @@ export const StatusDropdownIcon = () => {
   );
 };
 
-export const ChatSVG = () => {
+export const ChatSVG = ({ width, color }: { width: number; color: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
+      width={width}
+      height={width}
       viewBox="0 0 32 32"
       fill="none"
     >
       <path
         d="M15.9998 4C8.6665 4 2.6665 8.77333 2.6665 14.6667C2.69998 16.0836 3.04601 17.4756 3.67985 18.7433C4.3137 20.011 5.21972 21.1231 6.33317 22C6.33317 22.8 5.77317 24.8933 2.6665 28C5.8265 27.8533 8.85317 26.6667 11.2932 24.6667C12.8132 25.1067 14.4132 25.3333 15.9998 25.3333C23.3332 25.3333 29.3332 20.56 29.3332 14.6667C29.3332 8.77333 23.3332 4 15.9998 4ZM15.9998 22.6667C10.1065 22.6667 5.33317 19.08 5.33317 14.6667C5.33317 10.2533 10.1065 6.66667 15.9998 6.66667C21.8932 6.66667 26.6665 10.2533 26.6665 14.6667C26.6665 19.08 21.8932 22.6667 15.9998 22.6667Z"
-        fill="white"
+        fill={color}
       />
     </svg>
   );
@@ -494,7 +528,7 @@ export const TaskCard = (props: { borderColor: string }) => {
         </div>
       </div>
       {viewTask && (
-        <div className="bg-[#191919] overflow-auto fixed z-10 left-0 top-0 w-screen h-screen items-center justify-center">
+        <div className="bg-[#EEE] overflow-auto fixed z-10 left-0 top-0 w-screen h-screen items-center justify-center">
           <div className="flex py-20 items-center justify-center">
             <ViewTask onclick={displayViewTaskModal} />
           </div>
@@ -506,8 +540,8 @@ export const TaskCard = (props: { borderColor: string }) => {
 
 export const SendChatText = (props: { text: string; time: string }) => {
   return (
-    <div className="flex self-end bg-[#242424] text-[#999999] text-sm w-auto max-w-[80%] sm:max-w-[60%] rounded-3xl px-5 sm:px-7 py-3 sm:py-4">
-      <div className="text-left bg-[#242424] text-[#999999]">
+    <div className="flex self-end text-[#242424] bg-[#999999] text-sm w-auto max-w-[80%] sm:max-w-[60%] rounded-3xl px-5 sm:px-7 py-3 sm:py-4">
+      <div className="text-left text-[#242424] bg-[#999999]">
         <p>{props.text}</p>
         <p className="text-right mt-0 text-[11px]">{props.time}</p>
       </div>
@@ -517,7 +551,7 @@ export const SendChatText = (props: { text: string; time: string }) => {
 
 export const ReceiveChatText = (props: { text: string; time: string }) => {
   return (
-    <div className="self-start bg-[#242424] text-sm text-[#999999] w-auto max-w-[80%] sm:max-w-[60%] rounded-3xl px-5 sm:px-7 py-3 sm:py-4">
+    <div className="self-start text-[#242424] text-sm bg-[#999999] w-auto max-w-[80%] sm:max-w-[60%] rounded-3xl px-5 sm:px-7 py-3 sm:py-4">
       <p>{props.text}</p>
       <p className="text-right mt-0 sm:mt-[6px] text-[11px]">{props.time}</p>
     </div>

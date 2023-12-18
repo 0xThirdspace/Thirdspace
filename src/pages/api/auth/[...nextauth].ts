@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import login  from "@/pages/signin/api/login";
+import login from "@/pages/auth/login/api/login";
 import { BASE_URL } from "@/utils/constants";
 
 export const authOptions: NextAuthOptions = {
@@ -19,46 +19,49 @@ export const authOptions: NextAuthOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "jsmith@gmail.com" },
-        password: { label: "Password", type: "password" }
+        email: {
+          label: "Email",
+          type: "text",
+          placeholder: "jsmith@gmail.com",
+        },
+        password: { label: "Password", type: "password" },
       },
-
 
       async authorize(credentials: any, req) {
         const { email, password } = credentials;
 
-        if(!email || !password)  return null
+        if (!email || !password) return null;
         // Add logic here to look up the user from the credentials supplied
-        try{
-          const response = await login(email, password)
-          console.log(response)
-          return response
-        }catch(e){
-          console.error(e)
-          return e
-        }          
-      }
-    })
+        try {
+          const response = await login(email, password);
+          console.log(response);
+          return response;
+        } catch (e) {
+          console.error(e);
+          return e;
+        }
+      },
+    }),
     // ...add more providers here
   ],
   callbacks: {
-    async jwt ({token, user}) {
-      return {...token, ...user}
+    async jwt({ token, user }) {
+      return { ...token, ...user };
     },
 
-  async session ({session, token, user}) {
-    session.user = token as any
-    return session
+    async session({ session, token, user }) {
+      session.user = token as any;
+      return session;
+    },
   },
-},
-secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 
-pages: {
-  signIn: '/signin', 
-},
-session: {
-  strategy: "jwt",
-},
+  pages: {
+    signIn: "/signin",
+  },
+  session: {
+    strategy: "jwt",
+  },
 };
 
 export default NextAuth(authOptions);
